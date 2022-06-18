@@ -146,11 +146,95 @@ export default styles = StyleSheet.create({
         borderColor:'#9CA3AF',
         borderRadius:5,
         padding:10,
+
         marginTop:10,
         width:wp('90%'),
         alignSelf:'center',
-        paddingLeft:25,
+        paddingLeft:45,
         marginBottom:10
       },
-   
+      titleCover:{
+        width:wp('90%'),
+        flexDirection:'row',
+        justifyContent:'space-between',
+        alignSelf:'center',
+      },
+      left:{
+        width:wp('45%'),
+        borderBottomWidth:1,
+        padding:5,
+        borderRightWidth:1,
+        borderColor:'#E5E7EB',
+      },
+      right:{
+        width:wp('45%'),
+        borderBottomWidth:1,
+        padding:5,
+        borderRightWidth:0,
+        borderColor:'#E5E7EB',
+        flexDirection:'row',
+        justifyContent:'flex-end',
+        paddingRight:10,
+      },
+      smTitleText:{
+        fontSize: 16,
+        fontFamily: "Urbanist-Regular",
+        lineHeight: 24,
+        color: "#6B7280",
+        letterSpacing: 0.3,
+        fontWeight: "700",
+      },
+      searchImg:{
+        width:25,
+        height:25,
+        position:'absolute',
+        marginTop: Platform.OS === 'android' ? 22 : 18,
+        marginLeft:30,
+        opacity:0.6,
+
+      },
+      listCover:{
+        flexDirection:'row',
+        justifyContent:'space-between',
+        width:wp('90%'),
+        alignSelf:'center',
+        paddingVertical:5,
+        borderBottomWidth:1,
+        borderColor:"#E5E7EB"
+      },
+      nameText:{
+        fontSize: 14,
+        fontFamily: "Urbanist-Regular",
+        lineHeight: 20,
+        color: "#4B5563",
+        letterSpacing: 0.3,
+        fontWeight: "400",
+      },
+      purposeText:{
+        fontSize: 10,
+        fontFamily: "Urbanist-Regular",
+        lineHeight: 18,
+        color: "rgba(26, 26, 26, 0.7)",
+        letterSpacing: 0.3,
+        fontWeight: "400",
+      },
+      priceText:{
+        fontSize: 15,
+        fontFamily: "Urbanist-Regular",
+        lineHeight: 22,
+        color: "rgba(50, 129, 48, 0.7)",
+        letterSpacing: 0.3,
+        fontWeight: "400",
+      },
+      priceTextC:{
+        fontSize: 15,
+        fontFamily: "Urbanist-Regular",
+        lineHeight: 22,
+        color: "#DF8288",
+        letterSpacing: 0.3,
+        fontWeight: "400",
+      },
+      listContainer:{
+        height:hp('60%'),
+      }
 })

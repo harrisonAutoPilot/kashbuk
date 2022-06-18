@@ -1,14 +1,15 @@
 import React, {useState, useRef} from 'react';
 import {
-  View,Text, Image, StatusBar, ScrollView, Dimensions,TouchableOpacity,TextInput,Keyboard,TextInputField 
+  View,Text, Image, StatusBar, FlatList, Dimensions,TouchableOpacity,TextInput,Keyboard,TextInputField 
 } from 'react-native';
 import styles from "./style";
+import data from './data';
 import {useForm, Controller} from 'react-hook-form'
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 
 
 
-const Signin = ({ props, navigation }) => {
+const Debtor = ({ props, navigation }) => {
     const [errMsg, setErrMsg] = useState("");
     const [successMsg, setSuccessMsg] = useState("");
     const [pinVisibility, setPinVisibility] = useState(true);
@@ -69,6 +70,27 @@ const Signin = ({ props, navigation }) => {
         }
         return shade
     }
+
+
+    const ListView = (props) => {
+        const item = props.item;
+        const redirectToNavigationDetail = props.navigation;
+    
+        return (
+            <View style={styles.listCover}>
+            <View style={styles.listLeft}>
+                <Text style={styles.nameText}>Good is Good Motor</Text>
+                <Text style={styles.purposeText}>For transport fair</Text>
+            </View>
+            <View style={styles.listRight}>
+            <Text style={styles.priceText}>₦ 20,000</Text>
+               
+            </View>
+        </View>
+
+        )
+    };
+
  
     return (
      
@@ -79,8 +101,32 @@ const Signin = ({ props, navigation }) => {
         onChangeText={itemName => setItemName(itemName)}
         defaultValue={itemName}
         />
+<Image style={styles.searchImg} source={require("@Assets/image/magnifying-glass.png")} />
+        <View style={styles.titleCover}>
+           <View style={styles.left}>
+           <Text style={styles.smTitleText}>Names of Debtors</Text>
+           </View>
+           <View style={styles.right}>
+           <Text style={styles.smTitleText}>Amount owed</Text>
+           </View>
+        </View>
+
+       <View style={styles.listContainer}>
+       <FlatList
+                  showsVerticalScrollIndicator={false}
+                  scrollEnabled={true}
+                  data={data}
+                  keyExtractor={item => item.id}
+                  renderItem={ListView}
+                  ListFooterComponent={<View style={{ height: 50 }} />}
+                  columnWrapperStyle={styles.column}
+              />
+       
+       </View>
+       
+        
         </View>
     )
 };
 
-export default Signin;
+export default Debtor;

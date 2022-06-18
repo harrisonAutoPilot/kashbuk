@@ -9,8 +9,8 @@ import { Header, NavHeaderWhite } from "@Component";
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import styles from "./style";
 
-import Signin from "./Signin";
-import Signup from "./Signup"
+import Debtor from "./Debtor";
+import Creditor from "./Creditor"
 
 
 
@@ -54,7 +54,7 @@ const CashBook = (props, navigation) => {
               
             </LinearGradient>
         
-            {activeId === 1 ? <Signin props={props} navigation={navigation} /> : <Signup props={props} navigation={navigation} />}  
+            {activeId === 1 ? <Debtor props={props} navigation={navigation} /> : <Creditor props={props} navigation={navigation} />}  
         </View>
     )
 };
