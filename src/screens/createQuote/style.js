@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
         width:wp('100%'),
         backgroundColor: '#ffffff',
         alignItems:'center',
+        marginTop:Platform.OS === 'android' ? 20 : 0,
          //justifyContent:'space-between'
     },
   topSmTitle:{
@@ -118,6 +119,7 @@ padding:3,
     backgroundColor:'#fff',
     borderRadius:5,
     borderColor:'rgba(209, 213, 219, 0.4)',
+    fontFamily: "Urbanist-SemiBold",
     borderWidth:1,
     padding:10,
     width:wp('90%'),
@@ -147,6 +149,7 @@ padding:3,
   pickedDate:{
     fontSize:11,
     color: 'black',
+    fontFamily: "Urbanist-SemiBold",
   },
   increaseCartMainAmountView: {
     flexDirection: "row",

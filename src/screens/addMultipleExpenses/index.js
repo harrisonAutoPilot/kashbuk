@@ -19,7 +19,7 @@ import data from "./data";
 import payment from "./payment";
 
 
-const AddMultiple = (props) => {
+const AddMultipleExpenses = (props) => {
     const [errMsg, setErrMsg] = useState("");
     const result = props.result;
     const [active, setActive] = useState(1);
@@ -74,10 +74,6 @@ const AddMultiple = (props) => {
         setCartAmount(cartAmount + 1)
     };
 
-  const addItemBtn = () => {
-        props.navigation.navigate('AddItem')
-        }
-
     const decreaseCart = () => {
         // setErr("")
         if (cartAmount > 1) return setCartAmount(cartAmount - 1);
@@ -87,6 +83,10 @@ const AddMultiple = (props) => {
     const selectUserType = id => {
         setActive(id);
         setErr("")
+    }
+
+ addItemBtn = () => {
+    props.navigation.navigate('AddItem')
     }
 
     const renderItem = ({ item }) => (
@@ -144,7 +144,7 @@ const AddMultiple = (props) => {
             <View style={styles.container}>
                 <NavHeaderWhite onPress={returnBack} />
                 <View style={styles.topSmTitle}>
-                    <Text style={styles.topSmTitleText}>Record Multiple Sales</Text>
+                    <Text style={styles.topSmTitleText}>Record Multiple Expenses</Text>
                 </View>
 
 
@@ -160,9 +160,9 @@ const AddMultiple = (props) => {
                     />
                 </View>
                 <View style={styles.bottomCover}>
-                    <View style={styles.topCover}>
-                      <Text style={styles.addText}>Add item</Text>
-                    </View>
+                     <View style={styles.topCover}>
+                            <Text style={styles.addText}>Add item</Text>
+                    </View> 
                     <View>
 
                         <TextInput
@@ -170,7 +170,6 @@ const AddMultiple = (props) => {
                             placeholder="Item name"
                             onChangeText={itemName => setItemName(itemName)}
                             defaultValue={itemName}
-                            placeholderStyle={{fontSize:50}}
                         />
 
                         <TextInput
@@ -288,4 +287,4 @@ const AddMultiple = (props) => {
     )
 };
 
-export default AddMultiple;
+export default AddMultipleExpenses;

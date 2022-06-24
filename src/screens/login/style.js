@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   },
   darkText:{
     fontSize: 32,
-    fontFamily: "Helvetica",
+    fontFamily: "Urbanist-SemiBold",
    lineHeight: 40,
    color: "#1A1A1A",
    letterSpacing: 0.3,
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
    width:wp('100%'),
    padding:10,
    fontSize: 15,
-   fontFamily: "Helvetica",
+   fontFamily: "Urbanist-SemiBold",
    lineHeight: 22,
    fontWeight:'300',
    color: "#06353A",
@@ -83,7 +83,7 @@ padding:20,
   forgetText:{
   color:'#1A87DD',
   fontSize: 14,
-   fontFamily: "Helvetica",
+   fontFamily: "Urbanist-SemiBold",
    lineHeight: 17,
    fontWeight:'400',
   },
@@ -96,7 +96,7 @@ padding:20,
 },
 label: {
     fontSize: 12,
-    fontFamily: "Helvetica",
+    fontFamily: "Urbanist-SemiBold",
     lineHeight: 18,
     color: "#0F8D8F",
     fontWeight:'400',
@@ -120,7 +120,7 @@ showTextPin: {
   color: "#878787",
   fontSize: 14,
   marginTop: Platform.OS === "android" ? -32 : 5,
-  fontFamily: "Helvetica",
+  fontFamily: "Urbanist-SemiBold",
   lineHeight: 16,
   letterSpacing: 0.2,
   fontWeight: "400",
@@ -135,7 +135,7 @@ showCheck: {
   padding:4,
   fontSize: 10,
   marginTop: Platform.OS === "android" ? -32 : 5,
-  fontFamily: "Helvetica",
+  fontFamily: "Urbanist-SemiBold",
   lineHeight: 10,
   letterSpacing: 0.2,
   fontWeight: "400",
@@ -146,7 +146,7 @@ showCheck: {
 errText:{
 color: "red",
 fontSize: 12,
-fontFamily: "Helvetica",
+fontFamily: "Urbanist-SemiBold",
 lineHeight: 16,
 letterSpacing: 0.2,
 fontWeight: "400"
@@ -186,7 +186,7 @@ forGetCover:{
 greyText:{
 color: "#06353A",
 fontSize: 15,
-fontFamily: "Helvetica",
+fontFamily: "Urbanist-SemiBold",
 lineHeight: 18,
 letterSpacing: 0.2,
 fontWeight: "200"
@@ -194,7 +194,7 @@ fontWeight: "200"
 colorText:{
   color: "#1A87DD",
   fontSize: 15,
-  fontFamily: "Helvetica",
+  fontFamily: "Urbanist-SemiBold",
   lineHeight: 16,
   letterSpacing: 0.2,
   fontWeight: "300"

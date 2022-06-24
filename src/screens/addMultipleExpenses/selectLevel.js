@@ -110,7 +110,6 @@ const styles = StyleSheet.create({
   },
   selectedTextStyle: {
     fontSize: 12,
-    fontFamily: "Urbanist-SemiBold",
   },
   iconStyle: {
     width: 20,

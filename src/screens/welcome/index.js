@@ -16,7 +16,7 @@ const Welcome = (props) => {
            
           <View style={styles.midTextCover}>
               <Text style={styles.midText}>
-              Experience an <Text style={{color:'gold', fontWeight:'500', textDecorationLine:'underline'}}> easier way</Text> to record transactions!
+              Experience an <Text style={{color:'gold', fontWeight:'500', textDecorationLine:'underline'}}>easier way</Text> to record transactions!
               </Text>
           </View>
 

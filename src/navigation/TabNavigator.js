@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import React from "react";
-import { Image, View} from "react-native";
+import { Image, Platform, View} from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import styles from "./style";
 import Icon from 'react-native-vector-icons/FontAwesome5';
@@ -8,7 +8,7 @@ import Acon from 'react-native-vector-icons/AntDesign';
 import Ocon from 'react-native-vector-icons/Octicons';
 import FIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import { HomeStackNavigator, CashBookStackNavigator, SpaceStackNavigator, BrowseStackNavigator,ProfileStackNavigator} from "./StackNavigator";
+import { HomeStackNavigator, CashBookStackNavigator, SpaceStackNavigator, RecordStackNavigator,ProfileStackNavigator} from "./StackNavigator";
 
 const Tab = createBottomTabNavigator();
 
@@ -40,7 +40,7 @@ const tabBarOptions = {
     },
     tabStyle: {
     //   height: 50,
-    //   paddingHorizontal: 10,
+      paddingHorizontal: 10,
     //   marginTop:0,
     //   backgroundColor:'transparent',
       
@@ -58,10 +58,10 @@ const BottomTabNavigator = () => {
             tabBarActiveTintColor: "#fff",
             tabBarActiveBackgroundColor: "#0F8D8F",
             tabBarActiveBorderRadius:10,
-            tabBarItemStyle:{margin:5, borderRadius:8},
+            tabBarItemStyle:{margin:5, borderRadius:8,height:55,paddingBottom:Platform.OS === 'android' ? 0 : 10},
             tabBarInactiveTintColor: "#0F8D8F",
            
-            tabBarStyle: { height: Platform.OS === "android" ? 70 : 80, borderRadius:10, },
+            tabBarStyle: { height: Platform.OS === "android" ? 70 : 80, borderRadius:10},
             
       
 
@@ -105,7 +105,7 @@ const BottomTabNavigator = () => {
             />
 
 
-            <Tab.Screen name="BrowseScreen"  component={BrowseStackNavigator} options={{
+            <Tab.Screen name="BrowseScreen"  component={RecordStackNavigator} options={{
                         tabBarLabel: 'Records',
                         tabBarIcon: ({ color, focused }) => (
                             <View>

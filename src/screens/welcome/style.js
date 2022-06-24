@@ -40,16 +40,17 @@ const styles = StyleSheet.create({
 midTextCover:{
     width:wp('100%'),
     alignSelf:'center',
-   paddingHorizontal:8.9,
+   paddingHorizontal:5,
+  // backgroundColor:'red'
 
 },
 midText:{
     fontSize: 38,
-     fontFamily: "Helvetica",
+     fontFamily: "Urbanist-SemiBold",
     lineHeight: 40,
     color: "#06343C",
     letterSpacing: 0.3,
-    alignSelf:'center',
+   alignSelf:'center',
    
 },
 btnCover:{

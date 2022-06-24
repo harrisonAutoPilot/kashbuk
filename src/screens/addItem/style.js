@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
         width:wp('100%'),
         backgroundColor: '#ffffff',
         alignItems:'center',
+        marginTop:Platform.OS === 'android' ? 20 : 0,
          //justifyContent:'space-between'
     },
   topSmTitle:{
@@ -21,7 +22,7 @@ const styles = StyleSheet.create({
   },
   topSmTitleText:{
     fontSize: 14,
-    fontFamily: "Helvetica",
+    fontFamily: "Urbanist-SemiBold",
    lineHeight: 16,
    color: "#000000",
    letterSpacing: 0.3,
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
   },
   itemList:{
     fontSize: 14,
-    fontFamily: "Helvetica",
+    fontFamily: "Urbanist-SemiBold",
    lineHeight: 20,
    color: "#9CA3AF",
    letterSpacing: 0.3,
@@ -63,7 +64,7 @@ const styles = StyleSheet.create({
   },
   itemAmount:{
     fontSize: 14,
-    fontFamily: "Helvetica",
+    fontFamily: "Urbanist-SemiBold",
    lineHeight: 20,
    color: "#6B7280",
    letterSpacing: 0.3,
@@ -72,10 +73,8 @@ const styles = StyleSheet.create({
   bottomCover:{
     width:wp('100%'),
     // height:hp('50%'),
-    marginTop:0,
-    // backgroundColor:'rgba(15, 141, 143, 0.15)',
-    elevation:2,
-    shadowColor:'#f5f6f7'
+    marginTop:Platform.OS === 'android' ? 0 : 10,
+
   },
   topCover:{
     flexDirection:'row',
@@ -88,7 +87,7 @@ const styles = StyleSheet.create({
   },
   addText:{
     fontSize: 16,
-    fontFamily: "Helvetica",
+    fontFamily: "Urbanist-SemiBold",
    lineHeight: 28,
    color: "#000",
    letterSpacing: 0.3,
@@ -117,9 +116,11 @@ padding:3,
   },
   textInput:{
     backgroundColor:'#fff',
+    fontFamily: "Urbanist-SemiBold",
     borderRadius:5,
     borderColor:'rgba(209, 213, 219, 0.4)',
     borderWidth:1,
+   height:50,
     padding:10,
     width:wp('90%'),
     alignSelf:'center',
@@ -194,7 +195,7 @@ decreaseIconCartView: {
 },
 amountText: {
     fontSize: 22,
-    fontFamily: "Urbanist-Medium",
+    fontFamily: "Urbanist-SemiBold",
     lineHeight: 30,
     color: "#469D00",
     letterSpacing: 0.3,
@@ -228,7 +229,7 @@ increaseText: {
 },
 label2:{
   fontSize: 14,
-    fontFamily: "Urbanist-Medium",
+    fontFamily: "Urbanist-SemiBold",
     // lineHeight: 21,
     color: "#0F8D8F",
     letterSpacing: 0.3,
@@ -237,7 +238,7 @@ label2:{
 },
 label3:{
   fontSize: 10,
-    fontFamily: "Urbanist-Medium",
+    fontFamily: "Urbanist-SemiBold",
     lineHeight: 20,
     color: "#9CA3AF",
     letterSpacing: 0.3,
@@ -245,7 +246,7 @@ label3:{
 },
 labelText:{
   fontSize: 12,
-  fontFamily: "Urbanist-Medium",
+  fontFamily: "Urbanist-SemiBold",
   lineHeight: 20,
   color: "#111827",
   letterSpacing: 0.3,
@@ -261,7 +262,7 @@ optionTextView2: {
 
 },
 optionText: {
-  fontFamily: "Urbanist-Regular",
+  fontFamily: "Urbanist-SemiBold",
   fontSize: 14,
   lineHeight: 20,
   letterSpacing: 0.3,
@@ -332,6 +333,7 @@ selectContainer:{
 },
 btnCover:{
   paddingVertical:10,
+  marginTop:Platform.OS === 'android' ? 0 : -0,
 },
 createBtn:{
   width:wp('88%'),
@@ -357,7 +359,7 @@ btnText:{
   color:'#0F8D8F',
   textAlign:'center',
   fontSize: 14,
-  fontFamily: "Urbanist-Medium",
+  fontFamily: "Urbanist-SemiBold",
   lineHeight: 21,
   fontWeight:'500',
   letterSpacing: 0.3,
@@ -372,7 +374,7 @@ raiseText:{
   color:'rgba(26, 135, 221, 0.7)',
   textAlign:'center',
   fontSize: 14,
-  fontFamily: "Urbanist-Medium",
+  fontFamily: "Urbanist-SemiBold",
   lineHeight: 21,
   fontWeight:'500',
   letterSpacing: 0.3,

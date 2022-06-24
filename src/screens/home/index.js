@@ -96,6 +96,7 @@ const Home = (props) => {
   
     return (
         <SafeAreaView style={styles.container}>
+            <StatusBar backgroundColor={'red'} barStyle={'dark-content'} translucent={true} /> 
         <View style={styles.topCover}>
             <Header  title="CHI BEST"/>
         </View>
@@ -206,7 +207,7 @@ const Home = (props) => {
                           </View>
                         </View>
                         </TouchableOpacity>
-
+                        <TouchableOpacity onPress={() => props.navigation.navigate('AddMultipleExpenses')}>
                         <View style={styles.smBtnTwo}>
                             <View style={styles.smBtnInner}>
                             <Image style={styles.smLogo} source={require("@Assets/image/arcticons_myexpenses.png")} />
@@ -215,15 +216,19 @@ const Home = (props) => {
                              <Text style={styles.innerText}>Record an expense</Text> 
                           </View>
                         </View>
-
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => props.navigation.navigate('AddMultiple')}>
                         <View style={styles.smBtnThree}>
                             <View style={styles.smBtnInner}>
                             <Image style={styles.smLogo} source={require("@Assets/image/arcticons_aviasales.png")} />
                             </View>
+                          
                           <View style={styles.innerTextCover}>
                              <Text style={styles.innerText}>Record a sale</Text> 
                           </View>
+                          
                         </View>
+                        </TouchableOpacity>
 
                 </Animated.View>
                     </View>

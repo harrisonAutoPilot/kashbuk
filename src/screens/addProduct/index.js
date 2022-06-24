@@ -10,7 +10,9 @@ import commafy from "@Helper/Commafy";
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import FIcon from 'react-native-vector-icons/Feather';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Acon from 'react-native-vector-icons/AntDesign';
 import PaymentLevel from "./selectLevel";
+import ToggleSwitch from 'toggle-switch-react-native'
 import Fcon from 'react-native-vector-icons/Feather';
 import { registerSchema } from "@Helper/Schema";
 
@@ -19,12 +21,13 @@ import data from "./data";
 import payment from "./payment";
 
 
-const AddMultiple = (props) => {
+const AddProduct = (props) => {
     const [errMsg, setErrMsg] = useState("");
     const result = props.result;
     const [active, setActive] = useState(1);
     const [err, setErr] = useState("");
     const [viewAll, setViewAll] = useState(true);
+    const [isOnBlueToggleSwitch, SetIsOnBlueToggleSwitch] = useState(true)
     const [category, setCategory] = useState("");
     const [itemName, setItemName] = useState("");
     const [itemAmount, setItemAmount] = useState("");
@@ -33,18 +36,12 @@ const AddMultiple = (props) => {
     const [cartAmount, setCartAmount] = useState(1);
     const [newValue, setnewValue] = useState(1);
     const [adding, setAdding] = useState(false);
-    const [childData, setChildData] = useState("");
 
 
 
     const showPicker = () => {
-        setIsPickerShow(true);
+        setIsPickerShow(false);
     };
-
-    const passData = (childData) => {
-        setChildData(childData);
-       
-      };
 
     const onChange = (event, value) => {
         setDate(value);
@@ -55,7 +52,7 @@ const AddMultiple = (props) => {
     };
     // this is to return back to the Home Screen
     const returnBack = () => {
-        props.navigation.navigate('TabNavigator')
+        props.navigation.navigate('Record')
     }
 
     // const { status, errors } = useSelector((state) => state.auth);
@@ -74,15 +71,13 @@ const AddMultiple = (props) => {
         setCartAmount(cartAmount + 1)
     };
 
-  const addItemBtn = () => {
-        props.navigation.navigate('AddItem')
-        }
-
     const decreaseCart = () => {
         // setErr("")
         if (cartAmount > 1) return setCartAmount(cartAmount - 1);
     };
-
+    const onToggle = (isOn) => {
+        console.log("Changed to " + isOn);
+    }
 
     const selectUserType = id => {
         setActive(id);
@@ -140,29 +135,14 @@ const AddMultiple = (props) => {
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
-            <StatusBar backgroundColor={'transparent'} barStyle={'dark-content'} translucent={true} />  
             <View style={styles.container}>
                 <NavHeaderWhite onPress={returnBack} />
                 <View style={styles.topSmTitle}>
-                    <Text style={styles.topSmTitleText}>Record Multiple Sales</Text>
+                    <Text style={styles.topSmTitleText}>Create Product / Service</Text>
                 </View>
 
 
                 <View style={styles.recordsContainer}>
-                    <FlatList
-                        showsVerticalScrollIndicator={false}
-                        scrollEnabled={true}
-                        data={data}
-                        keyExtractor={item => item.id}
-                        renderItem={ListView}
-                        ListFooterComponent={<View style={{ height: 50 }} />}
-                        columnWrapperStyle={styles.column}
-                    />
-                </View>
-                <View style={styles.bottomCover}>
-                    <View style={styles.topCover}>
-                      <Text style={styles.addText}>Add item</Text>
-                    </View>
                     <View>
 
                         <TextInput
@@ -170,12 +150,11 @@ const AddMultiple = (props) => {
                             placeholder="Item name"
                             onChangeText={itemName => setItemName(itemName)}
                             defaultValue={itemName}
-                            placeholderStyle={{fontSize:50}}
                         />
 
                         <TextInput
                             style={styles.textInput}
-                            placeholder="0.00"
+                            placeholder="cost price"
                             keyboardType="number-pad"
                             onChangeText={itemAmount => setItemAmount(itemAmount)}
                             defaultValue={itemAmount}
@@ -183,8 +162,24 @@ const AddMultiple = (props) => {
                     </View>
 
                     <View style={styles.dateContainer}>
-                        <View style={styles.date1}>
-                            <Text style={styles.label3}>Quantity</Text>
+                    <TextInput
+                            style={styles.textInputSm}
+                            placeholder="margin %"
+                            keyboardType="number-pad"
+                            onChangeText={itemAmount => setItemAmount(itemAmount)}
+                            defaultValue={itemAmount}
+                        />
+                        <TextInput
+                            style={styles.textInputSm}
+                            placeholder="setting price"
+                            keyboardType="number-pad"
+                            onChangeText={itemAmount => setItemAmount(itemAmount)}
+                            defaultValue={itemAmount}
+                        />
+                    </View>
+                    <View style={styles.quantityCover}>
+                          
+                           <Text style={styles.label3}>Quantity</Text>
                             <View style={styles.increaseCartMainAmountView}>
                                 <View style={styles.cartAmountView}>
                                     <TouchableOpacity style={styles.increase} onPress={decreaseCart}>
@@ -209,21 +204,17 @@ const AddMultiple = (props) => {
                                         <FIcon name="plus" size={12} color="#9CA3AF" />
                                     </TouchableOpacity>
                                 </View>
-                                <View style={{ width: "57%" }}>
-                                    {/* <Text style={styles.amountText}>&#8358;{commafy(cartAmount)}</Text> */}
-                                </View>
+                              
                             </View>
-                        </View>
-                        <View style={styles.date1}>
-                            {/* The date picker */}
-                            {isPickerShow && (
+                    </View>
+                    <View style={styles.quantityCover}>
+
+                                {/* The date picker */}
+                                {isPickerShow && (
                                 <DateTimePicker
                                     value={date}
                                     mode={'date'}
-                                    display={
-                                        Platform.OS === "ios" ? "spinner" : "default"
-                                      }
-                                    // display={Platform.OS === 'ios' ? 'spinner' : 'calendar'}
+                                    display={Platform.OS === 'ios' ? 'spinner' : 'calendar'}
                                     is24Hour={true}
                                     onChange={onChange}
                                     style={styles.datePicker}
@@ -239,48 +230,39 @@ const AddMultiple = (props) => {
                                     <Fcon name="calendar" size={14} color="#000" style={{ paddingLeft: 5 }} />
                                 </TouchableOpacity>
                             )}
+
                         </View>
-                    </View>
-                    <View style={styles.textInput}>
-                        <PaymentLevel passData={passData}/>
-                    </View>
-                    {
-                        childData && childData === "Part Payment" ?
-                        <TextInput
-                        style={styles.textInput1}
-                        placeholder="Remaining Balance"
-                        keyboardType="number-pad"
-                        onChangeText={itemName => setItemName(itemName)}
-                        defaultValue={itemName}
-                    />
-                        :
-                        null
-
-                    }
-
-
+                       
                     {errMsg ? <View style={styles.errMainView}>
                         <Text style={styles.failedResponseText}>{errMsg}</Text>
                     </View> :
                         null
                     }
 
-                    <View style={styles.selectContainer}>
+                        <TouchableOpacity style={styles.uploadBtn}>
+                            <Acon name="picture" size={50} color="#4B4EFC" />
+                            <Text style={styles.uploadCaption}>Upload product image or drag and drop</Text>
+                            <Text style={styles.uploadCaptionGray}>PNG, JPG, , GIF Max 5MB</Text>
+                        </TouchableOpacity>
 
-                        <FlatList
-                            data={payment}
-                            renderItem={renderItem}
-                            keyExtractor={item => item.id}
-                            horizontal={true}
-                        />
-                    </View>
-                    <View style={styles.btnCover}>
                    
-                            <BtnLg title="Add Item" style={styles.createBtn} onPress={addItemBtn} styles={styles.btnText} />
                        
-                        <BtnLg title="Save" onPress={() => props.navigation.navigate('CreateQuote')} />
-                    </View>
+                        <View style={styles.btnCover}>
+                            <BtnLg title="Add To Stock" onPress={() => props.navigation.navigate('Record')} />
+                           
+                        </View>
+                    
                 </View>
+               
+                   
+                    {errMsg ? <View style={styles.errMainView}>
+                        <Text style={styles.failedResponseText}>{errMsg}</Text>
+                    </View> :
+                        null
+                    }
+                       
+                 
+    
 
 
             </View>
@@ -288,4 +270,4 @@ const AddMultiple = (props) => {
     )
 };
 
-export default AddMultiple;
+export default AddProduct;

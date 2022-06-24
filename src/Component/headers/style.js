@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     badgeText: {
         color: '#fff',
         fontSize: 10,
-        fontFamily: "Urbanist-Medium",
+        fontFamily: "Urbanist-SemiBold",
         lineHeight: 12,
         letterSpacing: 0.1,
         textAlign: "center",

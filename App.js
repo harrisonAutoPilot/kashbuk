@@ -32,7 +32,6 @@ import Otp from '@Screen/otp';
 import Home from '@Screen/home';
 
 import { NavigationContainer } from "@react-navigation/native";
-
 import MainStackNavigator from "@Navigation/StackNavigator";
 
 

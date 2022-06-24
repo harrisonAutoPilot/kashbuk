@@ -26,11 +26,11 @@ const styles = StyleSheet.create({
    lineHeight: 16,
    color: "#000000",
    letterSpacing: 0.3,
-   fontWeight:'500',
+   fontWeight:'400',
   },
   recordsContainer:{
     width:wp('100%'),
-    height:hp('20%'),
+    height:hp('50%'),
     alignSelf:'center',
     marginTop:-10,
     paddingLeft:5,
@@ -62,14 +62,6 @@ const styles = StyleSheet.create({
    letterSpacing: 0.3,
    fontWeight:'400',
   },
-  placeholder:{
-    fontSize: 14,
-    fontFamily: "Urbanist-SemiBold",
-   lineHeight: 20,
-   color: "red",
-   letterSpacing: 0.3,
-   fontWeight:'400',
-  },
   itemAmount:{
     fontSize: 14,
     fontFamily: "Urbanist-SemiBold",
@@ -80,8 +72,11 @@ const styles = StyleSheet.create({
   },
   bottomCover:{
     width:wp('100%'),
-    height:hp('80%'),
-    backgroundColor:'rgba(15, 141, 143, 0.15)'
+    // height:hp('50%'),
+    marginTop:0,
+    // backgroundColor:'rgba(15, 141, 143, 0.15)',
+    elevation:2,
+    shadowColor:'#f5f6f7'
   },
   topCover:{
     flexDirection:'row',
@@ -89,60 +84,118 @@ const styles = StyleSheet.create({
     width:wp('95%'),
     justifyContent:'space-between',
     alignSelf:'center',
-    marginTop:10,
+    // marginTop:10,
 
   },
   addText:{
-    fontSize: 14,
+    fontSize: 16,
     fontFamily: "Urbanist-SemiBold",
-   lineHeight: 21,
+   lineHeight: 28,
    color: "#000",
    letterSpacing: 0.3,
    fontWeight:'400',
-   paddingLeft:10,
   },
-  textInput1:{
-    backgroundColor:'#fff',
-    borderRadius:5,
-    padding:10,
+  thumbOnStyle:{
+backgroundColor:'#0F8D8F',
+
+  },
+  labelCover:{
     width:wp('90%'),
     alignSelf:'center',
-    paddingLeft:25,
-    marginBottom:20
+padding:3,
   },
-
+  thumbOffStyle:{
+    backgroundColor:'gray',
+    
+      },
+  trackOnStyle:{
+    borderColor:'#0F8D8F',
+    borderWidth:1, 
+  },
+  trackOffStyle:{
+    borderColor:'gray',
+    borderWidth:1, 
+  },
   textInput:{
     backgroundColor:'#fff',
+    fontFamily: "Urbanist-SemiBold",
     borderRadius:5,
     borderColor:'rgba(209, 213, 219, 0.4)',
-    fontFamily: "Urbanist-SemiBold",
     borderWidth:1,
     padding:10,
+    paddingVertical:Platform.OS === 'android' ? 12 : 14,
     width:wp('90%'),
     alignSelf:'center',
     paddingLeft:25,
     marginBottom:10
   },
-  dateContainer:{
-    flexDirection:'row',
-    padding:10,
-    width:wp('95%'),
-    justifyContent:'space-between',
+  textInputSm:{
+    backgroundColor:'#fff',
+    borderRadius:5,
+    fontFamily: "Urbanist-SemiBold",
+    borderWidth:1,
+    borderColor:'#D1D5DB',
+    padding:5,
+    paddingVertical:Platform.OS === 'android' ? 10 : 14,
+    width:wp('42%'),
     alignSelf:'center',
-    marginTop:-10
+    paddingLeft:25,
+    marginBottom:10,
+    marginTop:-2,
   },
-  date1:{
-    flexDirection:'row',
-    justifyContent:'space-between',
+  textInput1:{
     backgroundColor:'#fff',
     fontFamily: "Urbanist-SemiBold",
     borderRadius:5,
+    borderColor:'rgba(209, 213, 219, 0.4)',
+    borderWidth:1,
+    padding:10,
+    width:wp('90%'),
+    alignSelf:'center',
+    paddingLeft:25,
+    marginBottom:10,
+    marginTop:-7,
+  },
+  dateContainer:{
+    flexDirection:'row',
+    padding:10,
+    paddingTop:2,
+    paddingBottom:-12,
+    width:wp('95%'),
+    justifyContent:'space-between',
+    alignSelf:'center',
+  },
+  date1:{
+    flexDirection:'row',
+    fontFamily: "Urbanist-SemiBold",
+    justifyContent:'space-between',
+    backgroundColor:'#fff',
+    borderRadius:5,
     padding:10,
     width:wp('40%'),
+    borderWidth:1,
+    borderColor:'#D1D5DB',
     alignSelf:'center',
     height:40,
     alignItems:'center',
-    marginBottom:0
+    marginBottom:20
+  },
+  quantityCover:{
+    flexDirection:'row',
+    justifyContent:'space-between',
+    backgroundColor:'#fff',
+    borderRadius:5,
+    padding:12,
+    paddingHorizontal:20,
+    paddingVertical:12,
+    width:wp('90%'),
+    borderWidth:1,
+    borderColor:'#D1D5DB',
+    alignSelf:'center',
+     height:52,
+    alignItems:'center',
+    marginBottom:10,
+   
   },
   pickedDate:{
     fontSize:11,
@@ -151,9 +204,10 @@ const styles = StyleSheet.create({
   },
   increaseCartMainAmountView: {
     flexDirection: "row",
-    alignItems: "center",
+    // alignItems: "center",
     justifyContent: "space-between",
-    marginLeft:Platform.OS === 'android' ? 14 : 32,
+    marginLeft:14,
+    paddingVertical:20,
 },
 cartAmountView: {
     flexDirection: "row",
@@ -170,9 +224,6 @@ cartAmountView: {
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     height: 50
-},
-datePicker:{
-  fontFamily: "Urbanist-SemiBold",
 },
 decreaseIconCartView: {
     flexDirection: "row",
@@ -225,10 +276,18 @@ label2:{
 label3:{
   fontSize: 10,
     fontFamily: "Urbanist-SemiBold",
-    lineHeight: 20,
+    // lineHeight: 20,
     color: "#9CA3AF",
     letterSpacing: 0.3,
-    fontWeight:'700'
+    fontWeight:'400'
+},
+labelText:{
+  fontSize: 12,
+  fontFamily: "Urbanist-SemiBold",
+  lineHeight: 20,
+  color: "#111827",
+  letterSpacing: 0.3,
+  fontWeight:'400'
 },
 optionTextView: {
   marginLeft: 16,
@@ -310,7 +369,7 @@ selectContainer:{
   paddingHorizontal:10,
 },
 btnCover:{
-  paddingVertical:20,
+  paddingVertical:10,
 },
 createBtn:{
   width:wp('88%'),
@@ -321,7 +380,6 @@ createBtn:{
   alignSelf:'center',
   padding:10,
   borderRadius:6,
-  marginBottom:15,
 },
 createBtn1:{
   width:wp('70%'),
@@ -342,7 +400,55 @@ btnText:{
   fontWeight:'500',
   letterSpacing: 0.3,
     
+},
+raiseCover:{
+  flexDirection:'row',
+  padding:20,
+  
+},
+raiseText:{
+  color:'rgba(26, 135, 221, 0.7)',
+  textAlign:'center',
+  fontSize: 14,
+  fontFamily: "Urbanist-SemiBold",
+  lineHeight: 21,
+  fontWeight:'500',
+  letterSpacing: 0.3,
+},
+uploadBtn:{
+  width:wp('80%'),
+  backgroundColor:'#fff',
+  elevation:3,
+  shadowColor:'#000',
+  borderRadius:6,
+  padding:20,
+  alignItems:'center',
+  alignSelf:'center',
+  marginBottom:20,
+  marginTop:10,
+  borderWidth:1,
+  borderColor:'#f4f5f6',
+
+},
+uploadCaption:{
+  color:'#4B4EFC',
+  textAlign:'center',
+  fontSize: 16,
+  fontFamily: "Urbanist-SemiBold",
+  lineHeight: 24,
+  fontWeight:'400',
+  letterSpacing: 0.3,
+},
+uploadCaptionGray:{
+  color:'#6B7280',
+  textAlign:'center',
+  fontSize: 14,
+  fontFamily: "Urbanist-SemiBold",
+  lineHeight: 20,
+  fontWeight:'400',
+  letterSpacing: 0.3,
 }
+
 
 });
 

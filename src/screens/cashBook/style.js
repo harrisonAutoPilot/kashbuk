@@ -30,7 +30,7 @@ export default styles = StyleSheet.create({
     },
     headerText: {
         fontSize: 22,
-        fontFamily: "Urbanist-Regular",
+        fontFamily: "Urbanist-SemiBold",
         lineHeight: 28,
         color: "#fff",
         letterSpacing: 0.2,
@@ -47,6 +47,7 @@ export default styles = StyleSheet.create({
         backgroundColor: "#fff",
         width: "100%",
         alignSelf:'center',
+        marginTop:Platform.OS === 'android' ? 2 : 7,
     },
   
     subHeader: {
@@ -97,7 +98,6 @@ export default styles = StyleSheet.create({
         color:'#212121',
         letterSpacing: 0.1,
         textAlign: "center",
-        opacity: 0.8,
         // opacity: 0.6,
     },
     miniSubHeader: {
@@ -124,7 +124,7 @@ export default styles = StyleSheet.create({
     },
     innerLabel: {
         fontSize: 16,
-        fontFamily: "Urbanist-Regular",
+        fontFamily: "Urbanist-SemiBold",
         // lineHeight: 24,
         color: "rgba(33, 33, 33, 1)",
         letterSpacing: 0.3,
@@ -135,13 +135,13 @@ export default styles = StyleSheet.create({
     errText: {
         color: "red",
         fontSize: 12,
-        fontFamily: "Urbanist-Regular",
+        fontFamily: "Urbanist-SemiBold",
         lineHeight: 16,
         letterSpacing: 0.2,
         fontWeight: "400"
     },
     textInput:{
-       
+      fontFamily: "Urbanist-SemiBold",
         borderWidth:1,
         borderColor:'#9CA3AF',
         borderRadius:5,
@@ -178,7 +178,7 @@ export default styles = StyleSheet.create({
       },
       smTitleText:{
         fontSize: 16,
-        fontFamily: "Urbanist-Regular",
+        fontFamily: "Urbanist-SemiBold",
         lineHeight: 24,
         color: "#6B7280",
         letterSpacing: 0.3,
@@ -204,7 +204,7 @@ export default styles = StyleSheet.create({
       },
       nameText:{
         fontSize: 14,
-        fontFamily: "Urbanist-Regular",
+        fontFamily: "Urbanist-SemiBold",
         lineHeight: 20,
         color: "#4B5563",
         letterSpacing: 0.3,
@@ -212,7 +212,7 @@ export default styles = StyleSheet.create({
       },
       purposeText:{
         fontSize: 10,
-        fontFamily: "Urbanist-Regular",
+        fontFamily: "Urbanist-SemiBold",
         lineHeight: 18,
         color: "rgba(26, 26, 26, 0.7)",
         letterSpacing: 0.3,
@@ -220,7 +220,7 @@ export default styles = StyleSheet.create({
       },
       priceText:{
         fontSize: 15,
-        fontFamily: "Urbanist-Regular",
+        fontFamily: "Urbanist-SemiBold",
         lineHeight: 22,
         color: "rgba(50, 129, 48, 0.7)",
         letterSpacing: 0.3,
@@ -228,13 +228,13 @@ export default styles = StyleSheet.create({
       },
       priceTextC:{
         fontSize: 15,
-        fontFamily: "Urbanist-Regular",
+        fontFamily: "Urbanist-SemiBold",
         lineHeight: 22,
         color: "#DF8288",
         letterSpacing: 0.3,
         fontWeight: "400",
       },
       listContainer:{
-        height:hp('60%'),
+        height:hp('70%'),
       }
 })

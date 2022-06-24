@@ -35,12 +35,18 @@ const AddItem = (props) => {
     const [cartAmount, setCartAmount] = useState(1);
     const [newValue, setnewValue] = useState(1);
     const [adding, setAdding] = useState(false);
+    const [childData, setChildData] = useState("");
 
 
 
     const showPicker = () => {
         setIsPickerShow(true);
     };
+
+    const passData = (childData) => {
+        setChildData(childData);
+       
+      };
 
     const onChange = (event, value) => {
         setDate(value);
@@ -216,18 +222,22 @@ const AddItem = (props) => {
                             )}
                         </View>
                     </View>
-                    <View style={styles.textInput1}>
-                        <PaymentLevel />
+                    <View style={styles.textInput}>
+                        <PaymentLevel passData={passData}/>
                     </View>
-
-                    <TextInput
+                    {
+                        childData && childData === "Part Payment" ?
+                        <TextInput
                         style={styles.textInput}
                         placeholder="Remaining Balance"
+                        keyboardType="number-pad"
                         onChangeText={itemName => setItemName(itemName)}
                         defaultValue={itemName}
                     />
+                        :
+                        null
 
-
+                    }
 
                     {errMsg ? <View style={styles.errMainView}>
                         <Text style={styles.failedResponseText}>{errMsg}</Text>
@@ -244,8 +254,7 @@ const AddItem = (props) => {
                             horizontal={true}
                         />
                     </View>
-                </View>
-                <View style={styles.bottomCover}>
+                    <View style={styles.bottomCover}>
                     <View style={styles.btnCover}>
                         <BtnLg title="Add more Items" style={styles.createBtn1} onPress={returnBack} styles={styles.btnText} />
                     </View>
@@ -321,6 +330,8 @@ const AddItem = (props) => {
                     </View>
                 </View>
 
+                </View>
+           
 
             </View>
         </SafeAreaView>

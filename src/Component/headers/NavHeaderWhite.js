@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, View, Image, TouchableOpacity, StatusBar, SafeAreaView } from "react-native";
-import  Icon  from "react-native-vector-icons/Ionicons";
+import  Icon  from "react-native-vector-icons/AntDesign";
 import styles from "./style";
 
 
@@ -11,7 +11,7 @@ const NavHeaderWhite = (props) => {
 			<SafeAreaView >
 			<View style={ styles.mainHeader}>
 				<TouchableOpacity onPress={props.onPress} >
-				<Icon name="chevron-back" size={28} color="#000"  />
+				<Icon name="left" size={24} color="#000"  />
 					
 				</TouchableOpacity>
 				<View style={styles.logoCover}>

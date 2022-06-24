@@ -62,14 +62,6 @@ const styles = StyleSheet.create({
    letterSpacing: 0.3,
    fontWeight:'400',
   },
-  placeholder:{
-    fontSize: 14,
-    fontFamily: "Urbanist-SemiBold",
-   lineHeight: 20,
-   color: "red",
-   letterSpacing: 0.3,
-   fontWeight:'400',
-  },
   itemAmount:{
     fontSize: 14,
     fontFamily: "Urbanist-SemiBold",
@@ -81,7 +73,9 @@ const styles = StyleSheet.create({
   bottomCover:{
     width:wp('100%'),
     height:hp('80%'),
-    backgroundColor:'rgba(15, 141, 143, 0.15)'
+    backgroundColor:'#cceeff',
+    // elevation:5,
+    // shadowColor:'#000',
   },
   topCover:{
     flexDirection:'row',
@@ -114,8 +108,8 @@ const styles = StyleSheet.create({
   textInput:{
     backgroundColor:'#fff',
     borderRadius:5,
-    borderColor:'rgba(209, 213, 219, 0.4)',
     fontFamily: "Urbanist-SemiBold",
+    borderColor:'rgba(209, 213, 219, 0.4)',
     borderWidth:1,
     padding:10,
     width:wp('90%'),
@@ -135,7 +129,6 @@ const styles = StyleSheet.create({
     flexDirection:'row',
     justifyContent:'space-between',
     backgroundColor:'#fff',
-    fontFamily: "Urbanist-SemiBold",
     borderRadius:5,
     padding:10,
     width:wp('40%'),
@@ -171,9 +164,6 @@ cartAmountView: {
     shadowRadius: 3.84,
     height: 50
 },
-datePicker:{
-  fontFamily: "Urbanist-SemiBold",
-},
 decreaseIconCartView: {
     flexDirection: "row",
     // marginTop: 54,
@@ -181,7 +171,7 @@ decreaseIconCartView: {
 },
 amountText: {
     fontSize: 22,
-    fontFamily: "Urbanist-SemiBold",
+    fontFamily: "Urbanist-Medium",
     lineHeight: 30,
     color: "#469D00",
     letterSpacing: 0.3,
@@ -215,7 +205,7 @@ increaseText: {
 },
 label2:{
   fontSize: 14,
-    fontFamily: "Urbanist-SemiBold",
+    fontFamily: "Urbanist-Medium",
     // lineHeight: 21,
     color: "#0F8D8F",
     letterSpacing: 0.3,
@@ -224,7 +214,7 @@ label2:{
 },
 label3:{
   fontSize: 10,
-    fontFamily: "Urbanist-SemiBold",
+    fontFamily: "Urbanist-Medium",
     lineHeight: 20,
     color: "#9CA3AF",
     letterSpacing: 0.3,
@@ -240,7 +230,7 @@ optionTextView2: {
 
 },
 optionText: {
-  fontFamily: "Urbanist-SemiBold",
+  fontFamily: "Urbanist-Regular",
   fontSize: 14,
   lineHeight: 20,
   letterSpacing: 0.3,
@@ -337,7 +327,7 @@ btnText:{
   color:'#0F8D8F',
   textAlign:'center',
   fontSize: 14,
-  fontFamily: "Urbanist-SemiBold",
+  fontFamily: "Urbanist-Medium",
   lineHeight: 21,
   fontWeight:'500',
   letterSpacing: 0.3,

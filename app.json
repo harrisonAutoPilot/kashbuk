@@ -1,4 +1,5 @@
 {
   "name": "kashbuk",
-  "displayName": "kashbuk"
+  "displayName": "kashbuk",
+  "assetBundlePatterns":["asset/font/*"]  
 }

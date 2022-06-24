@@ -14,6 +14,7 @@ export default styles = StyleSheet.create({
         paddingTop: 10,
         alignItems: "center"
     },
+   
     badgeStyle: {
         backgroundColor: "#D32F2F",
         fontSize: 11,

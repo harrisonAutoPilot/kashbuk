@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from "react";
-import { View, Text,Image, TouchableOpacity,StatusBar} from "react-native";
+import { View, Text,Image,StatusBar, TouchableOpacity} from "react-native";
 import LinearGradient from 'react-native-linear-gradient';
 import {
   heightPercentageToDP as hp,
@@ -8,13 +8,12 @@ import {
 import { Header, NavHeaderWhite } from "@Component";
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import styles from "./style";
-
-import Debtor from "./Debtor";
-import Creditor from "./Creditor"
-
+import Report from "./Report"
+import Inventory from "./Inventory";
 
 
-const CashBook = (props, navigation) => {
+
+const Record = (props, navigation) => {
 
     // const dispatch = useDispatch();
     const [activeId, setActiveId] = useState(1);
@@ -45,19 +44,19 @@ const CashBook = (props, navigation) => {
         >     
                 <View style={styles.subHeader}>
                     <TouchableOpacity style={[activeId === 1 ? styles.activeSubHeader : styles.inActiveSubHeader, styles.miniSubHeader]} onPress={(props) => showActive(1)}>
-                        <Text style={[activeId === 1 ? styles.activeSubHeaderText : styles.inActiveSubHeaderText, styles.miniSubHeaderText]}>You’ll Get</Text>
+                        <Text style={[activeId === 1 ? styles.activeSubHeaderText : styles.inActiveSubHeaderText, styles.miniSubHeaderText]}>INVENTORY</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={[activeId === 2 ? styles.activeSubHeader : styles.inActiveSubHeader, styles.miniSubHeader]} onPress={(props) => showActive(2)}>
-                        <Text style={[activeId === 2 ? styles.activeSubHeaderText : styles.inActiveSubHeaderText, styles.miniSubHeaderText]}>You Owe</Text>
+                        <Text style={[activeId === 2 ? styles.activeSubHeaderText : styles.inActiveSubHeaderText, styles.miniSubHeaderText]}>REPORT</Text>
                     </TouchableOpacity>
                 </View>
               
               
             </LinearGradient>
         
-            {activeId === 1 ? <Debtor props={props} navigation={navigation} /> : <Creditor props={props} navigation={navigation} />}  
+            {activeId === 1 ? <Inventory props={props} navigation={navigation} /> : <Report props={props} navigation={navigation} />}  
         </View>
     )
 };
 
-export default CashBook;
+export default Record;

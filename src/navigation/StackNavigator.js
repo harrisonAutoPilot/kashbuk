@@ -10,8 +10,11 @@ import SignUp from "@Screen/signup";
 import Welcome from "@Screen/welcome";
 import CreateQuote from '@Screen/createQuote';
 import AddMultiple from '@Screen/addMultiple';
+import AddMultipleExpenses from '@Screen/addMultipleExpenses';
 import AddItem from '@Screen/addItem';
+import AddProduct from '@Screen/addProduct';
 import CashBook from '@Screen/cashBook';
+import Record from '@Screen/record';
 // import Profile from "../screens/Profile";
 // import Onboarding from "../screens/Onboarding";
 // import Login from "../screens/Login";
@@ -55,10 +58,10 @@ const CashBookStackNavigator = () => {
     </Stack.Navigator>
   );
 }
-const BrowseStackNavigator = () => {
+const RecordStackNavigator = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name="Browsee" component={Home} options={{ headerLeft: (props) => null }} />
+      <Stack.Screen name="Record" component={Record} options={{ headerLeft: (props) => null }} />
     </Stack.Navigator>
   );
 }
@@ -86,7 +89,9 @@ export default MainStackNavigator = () => {
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="SignUp" component={SignUp} />
           <Stack.Screen name="AddMultiple" component={AddMultiple} />
+          <Stack.Screen name="AddMultipleExpenses" component={AddMultipleExpenses} />
           <Stack.Screen name="AddItem" component={AddItem} />
+          <Stack.Screen name="AddProduct" component={AddProduct} />
           <Stack.Screen name="CreateQuote" component={CreateQuote} />
           <Stack.Screen name="Otp" component={Otp} />
           <Stack.Screen name="TabNavigator" component={BottomTabNavigator} initialRouteName="Home" />
@@ -95,5 +100,5 @@ export default MainStackNavigator = () => {
 }
 
 
- export { HomeStackNavigator,BrowseStackNavigator, SpaceStackNavigator , CashBookStackNavigator,ProfileStackNavigator };
+ export { HomeStackNavigator,RecordStackNavigator, SpaceStackNavigator , CashBookStackNavigator,ProfileStackNavigator };
 // export { HomeStackNavigator};
