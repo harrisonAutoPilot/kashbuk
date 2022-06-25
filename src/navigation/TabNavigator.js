@@ -8,7 +8,7 @@ import Acon from 'react-native-vector-icons/AntDesign';
 import Ocon from 'react-native-vector-icons/Octicons';
 import FIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import { HomeStackNavigator, CashBookStackNavigator, SpaceStackNavigator, RecordStackNavigator,ProfileStackNavigator} from "./StackNavigator";
+import { HomeStackNavigator, CashBookStackNavigator, SpaceStackNavigator, RecordStackNavigator,SettingStackNavigator} from "./StackNavigator";
 
 const Tab = createBottomTabNavigator();
 
@@ -120,7 +120,7 @@ const BottomTabNavigator = () => {
                     }}
             /> 
           
-          <Tab.Screen name="ProfileScreen"  component={ProfileStackNavigator} options={{
+          <Tab.Screen name="ProfileScreen"  component={SettingStackNavigator} options={{
                         tabBarLabel: 'Settings',
                         tabBarIcon: ({ color, focused }) => (
                             <View>

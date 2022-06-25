@@ -6,7 +6,7 @@ import BtnPre from "./btns/BtnPre";
  import Header from "./headers/Header";
  import NavHeaderWhite from "./headers/NavHeaderWhite";
  import GeneralStatusBarColor from "./GeneralStatusBarColor";
-// import COHeader from "./headers/COHeader";
+import NavHeader from "./headers/COHeader";
 // import EmptyPlaceHolder from "./placeholders/EmptyPlaceHolder";
 // import WalletCard from "./WalletCard";
 // import AddCartListEmptyBig from "./placeholders/AddCartListEmptyBig";
@@ -18,4 +18,4 @@ import BtnPre from "./btns/BtnPre";
 // import EmptyFinance from "./Empty/emptyFinance"
 // import EmptyCustomer from "./Empty/emptyCustomer"
 
-export { FormikValidator, NavHeaderWhite,GeneralStatusBarColor, InputField, AuthBtn, BtnLg, BtnPre, Header};
+export { FormikValidator, NavHeaderWhite,GeneralStatusBarColor,NavHeader, InputField, AuthBtn, BtnLg, BtnPre, Header};

@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   bottomCover:{
     width:wp('100%'),
     height:hp('80%'),
-    backgroundColor:'#cceeff',
+    backgroundColor:'rgba(223, 130, 136, 0.47)',
     // elevation:5,
     // shadowColor:'#000',
   },

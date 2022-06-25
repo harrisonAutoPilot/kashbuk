@@ -15,6 +15,7 @@ import AddItem from '@Screen/addItem';
 import AddProduct from '@Screen/addProduct';
 import CashBook from '@Screen/cashBook';
 import Record from '@Screen/record';
+import Settings from '@Screen/settings';
 // import Profile from "../screens/Profile";
 // import Onboarding from "../screens/Onboarding";
 // import Login from "../screens/Login";
@@ -46,7 +47,7 @@ const HomeStackNavigator = () => {
     }} 
     >
       <Stack.Screen name="Homee"   activetintcolor="red"  component={Home} initialRouteName='Settings' independent={true} options={{headerLeft: (props) => null }}  />
-      {/* <Stack.Screen name="Space" component={Space} /> */}
+   
     </Stack.Navigator>
   );
 }
@@ -73,10 +74,10 @@ const SpaceStackNavigator = () => {
   );
 }
 
-const ProfileStackNavigator = () => {
+const SettingStackNavigator = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name="Profilee" component={Home} options={{ headerLeft: (props) => null }} />
+      <Stack.Screen name="Settings" component={Settings} options={{ headerLeft: (props) => null }} />
     </Stack.Navigator>
   );
 }
@@ -100,5 +101,5 @@ export default MainStackNavigator = () => {
 }
 
 
- export { HomeStackNavigator,RecordStackNavigator, SpaceStackNavigator , CashBookStackNavigator,ProfileStackNavigator };
+ export { HomeStackNavigator,RecordStackNavigator, SpaceStackNavigator , CashBookStackNavigator,SettingStackNavigator };
 // export { HomeStackNavigator};

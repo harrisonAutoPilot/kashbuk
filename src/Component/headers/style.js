@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     },
     navCover: {
         flexDirection: 'row',
-        backgroundColor: '#00319D',
+        backgroundColor: '#fff',
     },
     mainHeader: {
         flexDirection: "row",
@@ -70,6 +70,14 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20
         // justifyContent: "space-between"
     },
+    titleCover1: {
+        width: wp('100%'),
+        alignItems: "center",
+        alignSelf: "center",
+        paddingHorizontal: 20,
+        marginTop:20,
+        // justifyContent: "space-between"
+    },
     logoCover:{
         width: wp('75%'),
         alignSelf: "center",
@@ -80,6 +88,16 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontFamily: "Urbanist-SemiBold",
         lineHeight: 20,
+        fontWeight: Platform.OS === "ios" ? "600" : "600",
+        letterSpacing: 0.1,
+        textAlign: "center",
+        textTransform: "capitalize"
+    },
+    btnText1: {
+        color: '#000',
+        fontSize: 20,
+        fontFamily: "Urbanist-SemiBold",
+        lineHeight: 30,
         fontWeight: Platform.OS === "ios" ? "600" : "600",
         letterSpacing: 0.1,
         textAlign: "center",
