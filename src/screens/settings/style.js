@@ -369,7 +369,7 @@ justifyContent:'center'
     fontWeight:'400'
   },
   optionTextLight:{
-    fontSize: 14,
+    fontSize: 12,
     fontFamily: "Urbanist-Regular",
     lineHeight: 21,
     color: "#1A1A1A",

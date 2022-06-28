@@ -115,7 +115,7 @@ const AddMultipleExpenses = (props) => {
         </View>
     );
 
-
+    const regex = new RegExp("^0+(?!$)", 'g');
 
     const ListView = (props) => {
         const item = props.item;

@@ -69,7 +69,7 @@ const AddItem = (props) => {
 
         setItemName([name], value);
     }
-
+    const regex = new RegExp("^0+(?!$)", 'g');
     const increaseCart = () => {
         // setErr("")
         // if (result.quantity_available > cartAmount) return 
@@ -179,9 +179,9 @@ const AddItem = (props) => {
                                             style={styles.label2}
                                             value={cartAmount.toString()}
                                             onChangeText={(val) => {
-                                                // if (result.quantity_available >= val) {
-                                                val = val.replaceAll(regex, "")
-                                                setCartAmount(val.replace(/[^0-9]/g, ''))
+                                                 // if (result.quantity_available >= val) {
+                                                    val = val.replaceAll(regex, "")
+                                                    setCartAmount(val.replace(/[^0-9]/g, ''))
                                                 // }
                                             }
                                             }

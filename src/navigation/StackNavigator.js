@@ -16,12 +16,9 @@ import AddProduct from '@Screen/addProduct';
 import CashBook from '@Screen/cashBook';
 import Record from '@Screen/record';
 import Settings from '@Screen/settings';
-// import Profile from "../screens/Profile";
-// import Onboarding from "../screens/Onboarding";
-// import Login from "../screens/Login";
-// import Signin from "../screens/Login/Signin";
-// import Signup from "../screens/Login/Signup";
-// import Favourite from '../screens/Login/Favourite';
+import Profile from '@Screen/profile';
+import ChangePin from '@Screen/changePin';
+
 
 import BottomTabNavigator from "./TabNavigator";
 
@@ -93,8 +90,10 @@ export default MainStackNavigator = () => {
           <Stack.Screen name="AddMultipleExpenses" component={AddMultipleExpenses} />
           <Stack.Screen name="AddItem" component={AddItem} />
           <Stack.Screen name="AddProduct" component={AddProduct} />
+          <Stack.Screen name="Profile" component={Profile} />
           <Stack.Screen name="CreateQuote" component={CreateQuote} />
           <Stack.Screen name="Otp" component={Otp} />
+          <Stack.Screen name="ChangePin" component={ChangePin} />
           <Stack.Screen name="TabNavigator" component={BottomTabNavigator} initialRouteName="Home" />
         </Stack.Navigator>
     );

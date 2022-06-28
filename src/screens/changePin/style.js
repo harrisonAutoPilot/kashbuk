@@ -11,13 +11,16 @@ const styles = StyleSheet.create({
         height:hp('100%'),
         width:wp('100%'),
         backgroundColor: '#ffffff',
+        alignItems:'center',
+        marginTop:Platform.OS === 'android' ? 20 : 0,
     },
   top:{
       flexDirection:'row',
       width:wp('100%'),
       justifyContent:'center',
+      paddingHorizontal:30,
       alignSelf:'center',
-      top:hp('15%'),
+      top:Platform.OS === 'android' ? hp('4%') : hp('8%'),
   },
   smLogo:{
     width:150,
@@ -25,26 +28,14 @@ const styles = StyleSheet.create({
     resizeMode:'contain'
   },
   darkText:{
-    fontSize: 32,
+    fontSize: 30,
     fontFamily: "Urbanist-SemiBold",
-   lineHeight: 40,
+   lineHeight: 52,
    color: "#1A1A1A",
    letterSpacing: 0.3,
    fontWeight:'700'
    
   },
-  checkView:{
-    position:'absolute',
-    zIndex:9,
-    marginTop:50,
-    right:wp('1%')
-    },
-    eyeCover:{
-      position:'absolute',
-      zIndex:9,
-      marginTop:Platform.OS === 'ios' ? 25 : 15,
-      right:wp('1%')
-    },
   midTitleCover:{
     width:wp('100%'),
     padding:30,
@@ -66,12 +57,24 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignSelf:'center',
 },
+checkView:{
+position:'absolute',
+zIndex:9,
+marginTop:50,
+right:wp('1%')
+},
+eyeCover:{
+  position:'absolute',
+  zIndex:9,
+  marginTop:Platform.OS === 'android' ? 14 : 25,
+  right:wp('1%')
+},
   inputContainer:{
       width:wp('100%'),
       paddingTop:10,
   //  paddingHorizontal:40,
    alignSelf:'center',
-      top:hp('12'),   
+      top:Platform.OS === "android" ? hp('4%') : hp('7%')  
   },
   forget:{
 width:wp('90%'),
@@ -89,7 +92,7 @@ padding:20,
   },
   labelView: {
     backgroundColor: "#fff",
-    paddingHorizontal: 5,
+    paddingHorizontal: 2,
     paddingVertical:1,
     marginTop:10,
     zIndex: 2
@@ -112,7 +115,7 @@ inputFieldStyle:{
   borderBottomWidth:1,
   borderColor:"#0F8D8F",
   width:wp('80%'),
-  paddingVertical:Platform.OS === "android" ? 10 : 20,
+  paddingVertical:Platform.OS === "android" ? 8 : 20,
  
 
 },
@@ -163,7 +166,7 @@ width:wp('100%'),
 padding:10,
 alignSelf:'center',
 alignItems:'center',
-marginTop: 100,
+marginTop: 60,
 
 },
 submit: {
@@ -200,9 +203,27 @@ colorText:{
   fontWeight: "300"
 },
 scrollStyle: {
-  paddingBottom: 300,
+   paddingBottom: 280,
 
 },
+titleCover:{
+width:wp('100%'),
+padding:30,
+alignSelf:'center',
+alignItems:'center',
+textAlign:'center',
+justifyContent:'center',
+marginBottom:10,
+marginTop:10,
+},
+titleText:{
+  color: "#0F8D8F",
+  fontSize:22,
+  fontFamily: "Urbanist-SemiBold",
+  lineHeight: 33,
+  letterSpacing: 0.2,
+  fontWeight: "600"
+}
 });
 
 export default styles

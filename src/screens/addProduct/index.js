@@ -64,7 +64,7 @@ const AddProduct = (props) => {
 
         setItemName([name], value);
     }
-
+    const regex = new RegExp("^0+(?!$)", 'g');
     const increaseCart = () => {
         // setErr("")
         // if (result.quantity_available > cartAmount) return 

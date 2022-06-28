@@ -64,7 +64,7 @@ right:wp('1%')
 eyeCover:{
   position:'absolute',
   zIndex:9,
-  marginTop:25,
+  marginTop:Platform.OS === 'android' ? 14 : 25,
   right:wp('1%')
 },
   inputContainer:{

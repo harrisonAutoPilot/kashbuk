@@ -53,7 +53,7 @@ const CreateQuote = (props) => {
     const returnBack = () => {
         props.navigation.navigate('AddMultiple')
     }
-
+    const regex = new RegExp("^0+(?!$)", 'g');
     // const { status, errors } = useSelector((state) => state.auth);
     const dismissKeyboard = () => Keyboard.dismiss();
 

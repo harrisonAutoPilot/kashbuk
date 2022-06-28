@@ -11,7 +11,7 @@ const loginSchema = yup.object({
 });
 
 const changePinSchema = yup.object({
-    current_password: yup.number().required("Current Pin is required").test('len', 'Pin should be exactly 4 digits', val => {if(val) return val.toString().length === 4}),
+    current_password: yup.number().required("Current Pin is required").test('len', 'Pin should be exactly 4 digits and must be your current password', val => {if(val) return val.toString().length === 4}),
     new_password: yup.number().required("Pin is required").test('len', 'Pin should be exactly 4 digits', val => {if(val) return val.toString().length === 4}),
     retype_password: yup.number().required("Pin is required").oneOf([yup.ref('new_password'), null], 'Pins must match'),
 });
@@ -29,8 +29,10 @@ const registerSchema = yup.object({
 });
 
 const profileSchema = yup.object({
-    firstname: yup.string().required("First Name is required"),
-    surname: yup.string().required("Surname is required")
+   username: yup.string().required("username is required"),
+   phone: yup.number().required("Phone Number is required").test('len', 'Phone Number should be valid begining with country code e.g (234)', val => {if(val) return val.toString().length === 13}),
+   business_name: yup.string().required("Business name is required").trim().min(10, "Business name should be without abbreviation"),
+   business_address: yup.string().required("Business Address is required").trim().min(10, "Business Address should be detailed"),
 });
 
 const addStoreSchema = yup.object({

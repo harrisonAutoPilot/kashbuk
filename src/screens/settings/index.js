@@ -11,18 +11,17 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import FIcon from 'react-native-vector-icons/Feather';
 import Mcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon from 'react-native-vector-icons/Ionicons';
-import PaymentLevel from "./selectLevel";
 import ToggleSwitch from 'toggle-switch-react-native'
 import Fcon from 'react-native-vector-icons/AntDesign';
 import { registerSchema } from "@Helper/Schema";
+import LanguageOption from "./LanguageOptions";
 import {
     heightPercentageToDP as hp,
     widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-
 import styles from "./style";
-import data from "./data";
-import payment from "./payment";
+
+
 
 const HEADER_MAX_HEIGHT = 240;
 const HEADER_MIN_HEIGHT = 84;
@@ -44,6 +43,7 @@ const Settings = ({ props, navigation }) => {
     const [newValue, setnewValue] = useState(1);
     const [adding, setAdding] = useState(false);
     const [childData, setChildData] = useState("");
+    const [showLanguage, setShowLanguage] = useState(false);
 
 
 
@@ -55,6 +55,8 @@ const Settings = ({ props, navigation }) => {
         setChildData(childData);
        
       };
+
+      const showLanguageOptions = () => setShowLanguage(true);
 
     const onChange = (event, value) => {
         setDate(value);
@@ -92,42 +94,17 @@ const Settings = ({ props, navigation }) => {
         console.log("Changed to " + isOn);
     }
 
+    const disLanguage = (id) => {
+      console.log(id);
+      setShowLanguage(false)
+    }
+
     const selectUserType = id => {
         setActive(id);
         setErr("")
     }
 
-    const RenderListItem = ({ item, index }) => {
-        return (
-            <>
-                {data.map((item) => (
-              <View style={styles.card} key ={item.id}>
-              <View style={styles.moreCover}>
-              {/* <Image source={require("../../assets/more.png")} style={styles.dotImg} /> */}
-              </View>
-                <Image source= {item.img} style={styles.smPostImg} />
-                <View style={styles.statContainer}>
-                  <View style={styles.statCover}>
-                     {/* <Image source={require("../../assets/like.png")} style={styles.likeImg} /> */}
-                     <Text style={styles.likeText}>{item.like}k</Text>
-                  </View>
-                   <View style={styles.statCover}>
-                     {/* <Image source={require("../../assets/relations.png")} style={styles.likeImg} /> */}
-                     <Text style={styles.likeText}>{item.relate}k</Text>
-                  </View> 
-                </View>
-                <Text style={styles.smTitleText} numberOfLines={2} >{item.title}</Text>
-                <Text style={styles.dateText}>{item.date}</Text>
-                </View>
-         ))}
-            </>
-        )
-      };
-      
-
-
-
-
+   
     const scrollY = useRef(new Animated.Value(0)).current;
     const [visible, setVisible] = useState(false);
     const headerTranslateY = scrollY.interpolate({
@@ -185,7 +162,8 @@ const Settings = ({ props, navigation }) => {
                 <View style={styles.iconCover}>
                   <FIcon name="globe" size={22} color="#000"/>
                 </View>
-                <View style={styles.listCover}>
+               <TouchableOpacity onPress={showLanguageOptions}>
+               <View style={styles.listCover}>
                     <Text style={styles.optionText}>
                     Language and location
                     </Text>
@@ -193,6 +171,7 @@ const Settings = ({ props, navigation }) => {
                     Change the language of the app.
                     </Text>
                 </View>
+               </TouchableOpacity>
             </View>
 
             <View style={styles.generalOptionCover}>
@@ -213,7 +192,8 @@ const Settings = ({ props, navigation }) => {
                 <View style={styles.iconCover}>
                   <FIcon name="lock" size={22} color="#000"/>
                 </View>
-                <View style={styles.listCover}>
+               <TouchableOpacity onPress={() => navigation.navigate("ChangePin")}>
+               <View style={styles.listCover}>
                     <Text style={styles.optionText}>
                     Change Pin
                     </Text>
@@ -221,6 +201,7 @@ const Settings = ({ props, navigation }) => {
                     Change Password/Pin
                     </Text>
                 </View>
+               </TouchableOpacity>
             </View>
 
 
@@ -247,7 +228,7 @@ const Settings = ({ props, navigation }) => {
 
             <View style={styles.generalOptionCover}>
                 <View style={styles.iconCover}>
-                  <Icon name="notifications-outline" size={22} color="#000"/>
+                  <Icon name="briefcase-outline" size={22} color="#000"/>
                 </View>
                 <View style={styles.listCover}>
                     <Text style={styles.optionText}>
@@ -351,9 +332,14 @@ const Settings = ({ props, navigation }) => {
         </View>
           <View style={styles.smContainer}>
        
-      <BtnLg  title="Edit Profile" style={styles.smBtn} />
+      <BtnLg  title="Edit Profile" style={styles.smBtn} onPress={() => navigation.navigate('Profile')} />
           </View>
          
+
+          <LanguageOption
+                visibleRetrieve={showLanguage}
+                returnBack={(id) => disLanguage(id)}
+            />
         </Animated.View>
        
         

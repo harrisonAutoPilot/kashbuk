@@ -82,7 +82,7 @@ const AddMultiple = (props) => {
         // setErr("")
         if (cartAmount > 1) return setCartAmount(cartAmount - 1);
     };
-
+    const regex = new RegExp("^0+(?!$)", 'g');
 
     const selectUserType = id => {
         setActive(id);
@@ -170,7 +170,7 @@ const AddMultiple = (props) => {
                             placeholder="Item name"
                             onChangeText={itemName => setItemName(itemName)}
                             defaultValue={itemName}
-                            placeholderStyle={{fontSize:50}}
+                            
                         />
 
                         <TextInput
