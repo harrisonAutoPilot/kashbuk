@@ -43,7 +43,11 @@ const Home = (props) => {
           useNativeDriver: true
         }).start();
       };
-    
+
+      
+    const receipt =()=>{
+     props.navigation.navigate('Receipt')
+    }
 
     // const { status, errors } = useSelector((state) => state.auth);
     const dismissKeyboard = () => Keyboard.dismiss();
@@ -74,10 +78,12 @@ const Home = (props) => {
                     <View>
                         <Text style={styles.itemDate}>{item.time}</Text>
                       </View>
-                    <View style={styles.receiptCover}>
+                   <TouchableOpacity onPress={receipt}>
+                   <View style={styles.receiptCover}>
                        <Icon name="document-text-outline" color="#789EE0" size={12} style={styles.docStyle} />
                         <Text style={styles.receiptText}>Raise a Receipt</Text>
                     </View>
+                   </TouchableOpacity>
                 </View>
                 <View style={styles.itemRightCover}>
                     <View >

@@ -15,6 +15,7 @@ import ToggleSwitch from 'toggle-switch-react-native'
 import Fcon from 'react-native-vector-icons/AntDesign';
 import { registerSchema } from "@Helper/Schema";
 import LanguageOption from "./LanguageOptions";
+import CurrencyOption from "./CurrencyOptions";
 import {
     heightPercentageToDP as hp,
     widthPercentageToDP as wp,
@@ -44,6 +45,8 @@ const Settings = ({ props, navigation }) => {
     const [adding, setAdding] = useState(false);
     const [childData, setChildData] = useState("");
     const [showLanguage, setShowLanguage] = useState(false);
+    const [showCurrency, setShowCurrency] = useState(false);
+    
 
 
 
@@ -57,6 +60,8 @@ const Settings = ({ props, navigation }) => {
       };
 
       const showLanguageOptions = () => setShowLanguage(true);
+
+      const showCurrencyOptions = () => setShowCurrency(true);
 
     const onChange = (event, value) => {
         setDate(value);
@@ -97,6 +102,11 @@ const Settings = ({ props, navigation }) => {
     const disLanguage = (id) => {
       console.log(id);
       setShowLanguage(false)
+    }
+
+    const disCurrency = (id) => {
+      console.log(id);
+      setShowCurrency(false)
     }
 
     const selectUserType = id => {
@@ -209,6 +219,7 @@ const Settings = ({ props, navigation }) => {
                 <View style={styles.iconCover}>
                   <Mcon name="currency-usd" size={22} color="#000"/>
                 </View>
+                <TouchableOpacity onPress={showCurrencyOptions}>
                 <View style={styles.listCover}>
                     <Text style={styles.optionText}>
                     Choose Currency
@@ -217,6 +228,7 @@ const Settings = ({ props, navigation }) => {
                     Change Currency
                     </Text>
                 </View>
+                </TouchableOpacity>
             </View>
 
             {/* this is horizontal line */}
@@ -230,6 +242,7 @@ const Settings = ({ props, navigation }) => {
                 <View style={styles.iconCover}>
                   <Icon name="briefcase-outline" size={22} color="#000"/>
                 </View>
+                <TouchableOpacity onPress={() => navigation.navigate("SelectBusiness")}>
                 <View style={styles.listCover}>
                     <Text style={styles.optionText}>
                     Add Business
@@ -238,6 +251,7 @@ const Settings = ({ props, navigation }) => {
                     Add a new business
                     </Text>
                 </View>
+              </TouchableOpacity>
             </View>
 
      <View style={styles.horizontalLine} />
@@ -339,6 +353,10 @@ const Settings = ({ props, navigation }) => {
           <LanguageOption
                 visibleRetrieve={showLanguage}
                 returnBack={(id) => disLanguage(id)}
+            />
+            <CurrencyOption
+                visibleCurrency={showCurrency}
+                returnBack={(id) => disCurrency(id)}
             />
         </Animated.View>
        

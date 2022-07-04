@@ -9,11 +9,11 @@ import Modal from "react-native-modal";
 import styles from "./style";
 
 
-const LanguageOption = (props) => {
+const CurrencyOption = (props) => {
   // const dispatch = useDispatch();
 
 
-  const [showPaymentOption, setShowPaymentOption] = useState(false);
+  const [showCurrencyOption, setShowCurrencyOption] = useState(false);
   const [option, setOption] = useState("");
   const [active, setActive] = useState("0");
   const [errMsg, setErrMsg] = useState("");
@@ -46,9 +46,7 @@ const LanguageOption = (props) => {
           {active && active === item.id ?
             <View style={styles.activeCover}>
               <View style={styles.iconCircle}>
-                {/* <Image source={item.img}  style={styles.bikeImg} /> */}
-                <FIcon name="globe" size={32} color="#fff"/>
-
+                <Image source={item.img}  style={styles.bikeImg} />
               </View>
               <View style={styles.optionTextCover}>
                 <Text style={styles.optionText}>{item.name}</Text>
@@ -59,7 +57,7 @@ const LanguageOption = (props) => {
             :
             <View style={styles.activeCover}>
               <View style={styles.iconCircle2}>
-              <FIcon name="globe" size={32} color="#000"/>
+              <Image source={item.img}  style={styles.bikeImg} />
               </View>
               <View style={styles.optionTextCover}>
                <Text style={styles.optionText2}>{item.name}</Text>
@@ -76,7 +74,7 @@ const LanguageOption = (props) => {
 
   return (
     <Modal
-      isVisible={props.visibleRetrieve}
+      isVisible={props.visibleCurrency}
       onBackdropPress={closeModal}
       onSwipeComplete={() => setPaymentOption(false)}
       swipeDirection="left"
@@ -92,7 +90,7 @@ const LanguageOption = (props) => {
       <Pressable style={styles.outsideModal}
         onPress={(event) => {
           if (event.target == event.currentTarget) {
-            setShowPaymentOption(false);
+            setShowCurrencyOption(false);
           }
         }} >
         <View style={styles.body5}>
@@ -101,7 +99,7 @@ const LanguageOption = (props) => {
             </View>
           <View style={styles.imageHolder}>
             <View style={styles.smTitleCover}>
-              <Text style={styles.smTitle}>Change your Language</Text>
+              <Text style={styles.smTitle}>Change your Currency</Text>
             </View>
 
             <View style={styles.mainContainer}>
@@ -143,4 +141,4 @@ const LanguageOption = (props) => {
   )
 };
 
-export default LanguageOption
+export default CurrencyOption

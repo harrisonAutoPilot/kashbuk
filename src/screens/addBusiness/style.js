@@ -1,0 +1,272 @@
+import { Dimensions, StyleSheet, Platform } from "react-native";
+import {
+    heightPercentageToDP as hp,
+    widthPercentageToDP as wp,
+} from 'react-native-responsive-screen';
+
+
+const styles = StyleSheet.create({
+    container: {
+        //  flex: 1,
+        height:hp('100%'),
+        width:wp('100%'),
+        backgroundColor: '#ffffff',
+        alignItems:'center',
+        marginTop:Platform.OS === 'android' ? 20 : 0,
+    },
+  top:{
+      flexDirection:'row',
+      width:wp('100%'),
+      justifyContent:'center',
+      paddingHorizontal:30,
+      alignSelf:'center',
+      top:Platform.OS === 'android' ? hp('4%') : hp('8%'),
+  },
+  smLogo:{
+    width:150,
+    height:40,
+    resizeMode:'contain'
+  },
+  darkText:{
+    fontSize: 30,
+    fontFamily: "Urbanist-SemiBold",
+   lineHeight: 52,
+   color: "#1A1A1A",
+   letterSpacing: 0.3,
+   fontWeight:'700'
+   
+  },
+  midTitleCover:{
+    width:wp('100%'),
+    padding:30,
+    top:hp('16%'),
+  },
+  midTitleText:{
+   width:wp('100%'),
+   padding:10,
+   fontSize: 15,
+   fontFamily: "Urbanist-SemiBold",
+   lineHeight: 22,
+   fontWeight:'300',
+   color: "#06353A",
+   letterSpacing: 0.3,
+  },
+  inputCover: {
+    width: wp('100%'),
+    paddingHorizontal:40,
+    backgroundColor: '#fff',
+    alignSelf:'center',
+},
+checkView:{
+position:'absolute',
+zIndex:9,
+marginTop:50,
+right:wp('1%')
+},
+eyeCover:{
+  position:'absolute',
+  zIndex:9,
+  marginTop:Platform.OS === 'android' ? 14 : 25,
+  right:wp('1%')
+},
+  inputContainer:{
+      width:wp('90%'),
+      height:480,
+      paddingTop:10,
+  //  paddingHorizontal:40,
+      alignSelf:'center',
+      top:Platform.OS === "android" ? hp('4%') : hp('7%'),
+      borderWidth:Platform.OS === "android" ? 1 : 1,
+     shadowColor: '#fff',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    elevation: 0,
+      borderColor:"#f3f4f5",
+      borderRadius:10,
+      marginTop:-40,
+  },
+  forget:{
+width:wp('90%'),
+flexDirection:'row',
+justifyContent:'flex-end',
+alignSelf:'center',
+padding:20,
+  },
+  forgetText:{
+  color:'#1A87DD',
+  fontSize: 14,
+   fontFamily: "Urbanist-SemiBold",
+   lineHeight: 17,
+   fontWeight:'400',
+  },
+  labelView: {
+    backgroundColor: "#fff",
+    paddingHorizontal: 2,
+    paddingVertical:1,
+    marginTop:10,
+    zIndex: 2
+},
+label: {
+    fontSize: 12,
+    fontFamily: "Urbanist-SemiBold",
+    lineHeight: 18,
+    color: "#0F8D8F",
+    fontWeight:'400',
+    letterSpacing: 0.2,
+},
+pinInputView: {
+  flexDirection: "row",
+  justifyContent: "space-between",
+  width: "100%",
+  flexWrap: "wrap"
+},
+inputFieldStyle:{
+  borderWidth:1,
+  borderColor:"#9CA3AF",
+  fontFamily: "Urbanist-SemiBold",
+  width:wp('80%'),
+  paddingLeft:20,
+  borderRadius:6,
+  paddingVertical:Platform.OS === "android" ? 8 : 20,
+  marginBottom:20,
+
+},
+inputFieldStyleM:{
+  borderWidth:1,
+  borderColor:"#9CA3AF",
+  fontFamily: "Urbanist-SemiBold",
+  width:wp('80%'),
+  height:80,
+  paddingLeft:20,
+  borderRadius:6,
+  paddingVertical:Platform.OS === "android" ? 8 : 20,
+  marginBottom:20,
+
+},
+showTextPin: {
+  color: "#878787",
+  fontSize: 14,
+  marginTop: Platform.OS === "android" ? -32 : 5,
+  fontFamily: "Urbanist-SemiBold",
+  lineHeight: 16,
+  letterSpacing: 0.2,
+  fontWeight: "400",
+  position:'absolute',
+  zIndex:8,
+   left:wp('75%'),
+},
+showCheck: {
+  color: "#fff",
+  backgroundColor:'#0F8D8F',
+  borderRadius:50,
+  padding:4,
+  fontSize: 10,
+  marginTop: Platform.OS === "android" ? -32 : 5,
+  fontFamily: "Urbanist-SemiBold",
+  lineHeight: 10,
+  letterSpacing: 0.2,
+  fontWeight: "400",
+  position:'absolute',
+  zIndex:8,
+   left:wp('75%'),
+},
+errText:{
+color: "red",
+fontSize: 12,
+fontFamily: "Urbanist-SemiBold",
+lineHeight: 16,
+letterSpacing: 0.2,
+fontWeight: "400"
+},
+failedResponseView: {
+  marginTop: 10,
+  borderWidth: 1,
+  borderRadius: 8,
+  paddingHorizontal: 5,
+  backgroundColor: "red"
+},
+btnCover:{
+width:wp('100%'),
+padding:10,
+alignSelf:'center',
+alignItems:'center',
+marginTop: 10,
+
+},
+submit: {
+  
+  paddingVertical: 12,
+  width:wp('85%'),
+  backgroundColor: "#0F8D8F",
+  borderRadius:8,
+  zIndex: 2,
+},
+forGetCover:{
+  width:wp('100%'),
+  marginTop:20,
+  flexDirection:'row',
+  alignSelf:'center',
+  justifyContent:'center'
+
+
+},
+greyText:{
+color: "#06353A",
+fontSize: 15,
+fontFamily: "Urbanist-SemiBold",
+lineHeight: 18,
+letterSpacing: 0.2,
+fontWeight: "200"
+},
+colorText:{
+  color: "#1A87DD",
+  fontSize: 15,
+  fontFamily: "Urbanist-SemiBold",
+  lineHeight: 16,
+  letterSpacing: 0.2,
+  fontWeight: "300"
+},
+scrollStyle: {
+   paddingBottom: 280,
+
+},
+titleCover:{
+width:wp('100%'),
+padding:30,
+alignSelf:'center',
+alignItems:'center',
+textAlign:'center',
+justifyContent:'center',
+marginBottom:5,
+marginTop:-5,
+},
+titleText:{
+  color: "#0F8D8F",
+  fontSize:20,
+  fontFamily: "Urbanist-SemiBold",
+  lineHeight: 33,
+  letterSpacing: 0.2,
+  fontWeight: "400"
+},
+titleCaption:{
+  width:wp('80%'),
+  padding:10,
+  paddingLeft:20
+},
+titleBgText:{
+  color: "#0F8D8F",
+  fontSize: 16,
+  fontFamily: "Urbanist-SemiBold",
+  lineHeight: 24,
+  letterSpacing: 0.2,
+  fontWeight: "700"
+},
+errView:{
+marginTop:-20,
+marginBottom:10,
+paddingLeft:10,
+}
+});
+
+export default styles

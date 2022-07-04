@@ -284,7 +284,7 @@ iconCircleDrop: {
   marginTop: 20,
 },
 iconCircle2: {
-  borderColor: "#D1D5DB",
+  borderColor: "#fff",
   flexDirection:'row',
   borderWidth: 2,
   width: 20,

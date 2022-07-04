@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
   },
   camCover: {
     marginTop: Platform.OS === 'ios' ? 140 : 145,
-    marginRight: 160,
+    marginRight:Platform.OS === 'android' ? 160 : 180,
     padding: 5,
     backgroundColor: '#fff',
     borderRadius: 100,

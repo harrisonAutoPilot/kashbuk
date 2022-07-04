@@ -18,6 +18,9 @@ import Record from '@Screen/record';
 import Settings from '@Screen/settings';
 import Profile from '@Screen/profile';
 import ChangePin from '@Screen/changePin';
+import AddBusiness from '@Screen/addBusiness';
+import SelectBusiness from '@Screen/selectBusiness';
+import Receipt from '@Screen/receipt';
 
 
 import BottomTabNavigator from "./TabNavigator";
@@ -43,7 +46,7 @@ const HomeStackNavigator = () => {
       headerShown: false
     }} 
     >
-      <Stack.Screen name="Homee"   activetintcolor="red"  component={Home} initialRouteName='Settings' independent={true} options={{headerLeft: (props) => null }}  />
+      <Stack.Screen name="Homee"   activetintcolor="red"  component={Home} initialRouteName='Home' independent={true} options={{headerLeft: (props) => null }}  />
    
     </Stack.Navigator>
   );
@@ -53,6 +56,7 @@ const CashBookStackNavigator = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="CashBook" component={CashBook} options={{ headerLeft: (props) => null }} />
+      <Stack.Screen name="Receipt" component={Receipt} options={{ headerLeft: (props) => null }} />
     </Stack.Navigator>
   );
 }
@@ -94,6 +98,8 @@ export default MainStackNavigator = () => {
           <Stack.Screen name="CreateQuote" component={CreateQuote} />
           <Stack.Screen name="Otp" component={Otp} />
           <Stack.Screen name="ChangePin" component={ChangePin} />
+          <Stack.Screen name="AddBusiness" component={AddBusiness} />
+          <Stack.Screen name="SelectBusiness" component={SelectBusiness} />
           <Stack.Screen name="TabNavigator" component={BottomTabNavigator} initialRouteName="Home" />
         </Stack.Navigator>
     );

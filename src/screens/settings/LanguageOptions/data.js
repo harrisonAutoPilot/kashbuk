@@ -7,17 +7,17 @@ import arabic from '../../../asset/image/arabic.jpeg'
 export default data = [
     {
         id: "1",
-        name: "Arabic Language",
+        name: "Arabic",
         img: arabic,
     },
     {
         id: "2",
-         name: "English Language",
+         name: "English",
         img:english,
     },
     {
         id: "3",
-         name: "French Language",
+         name: "French",
          img: french,
     },
    

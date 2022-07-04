@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
   },
   camCover: {
     marginTop: Platform.OS === 'ios' ? 90 : 95,
-    marginRight: 160,
+    marginRight:Platform.OS === "android" ?  160 : 190,
     padding: 5,
     backgroundColor: '#fff',
     borderRadius: 100,
@@ -375,6 +375,15 @@ justifyContent:'center'
     color: "#1A1A1A",
     letterSpacing: 0.3,
     fontWeight:'400'
+  },
+  optionTextLight1:{
+    fontSize: 12,
+    fontFamily: "Urbanist-Regular",
+    lineHeight: 21,
+    color: "#1A1A1A",
+    letterSpacing: 0.3,
+    fontWeight:'400',
+    marginTop:-22
   },
   horizontalLine:{
 width:wp('90%'),

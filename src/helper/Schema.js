@@ -35,6 +35,13 @@ const profileSchema = yup.object({
    business_address: yup.string().required("Business Address is required").trim().min(10, "Business Address should be detailed"),
 });
 
+const addBusinessSchema = yup.object({
+    business_name: yup.string().required("business name is required"),
+    business_rc: yup.string().required("Business Registration number is required").trim().min(6, "Business RC should be valid"),
+    business_address: yup.string().required("Business address is required").trim().min(10, "Business address should be detailed"),
+    start_date: yup.string().required("Business start date is required")
+ });
+
 const addStoreSchema = yup.object({
     name:yup.string().required("Store name is required"),
     address: yup.string().required("Store Address is required").trim().min(10, "Store Address must be at least 10 characters"),
@@ -61,4 +68,4 @@ const productSchema = yup.object({
 });
 
 
-export {searchSchema, loginSchema, changePinSchema, registerSchema, profileSchema, addStoreSchema, addStoreSchema2, addStoreSchemaImg, productSchema}
+export {searchSchema,addBusinessSchema, loginSchema, changePinSchema, registerSchema, profileSchema, addStoreSchema, addStoreSchema2, addStoreSchemaImg, productSchema}

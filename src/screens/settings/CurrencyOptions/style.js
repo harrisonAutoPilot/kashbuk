@@ -1,4 +1,4 @@
-import {StyleSheet, Dimensions, Platform} from "react-native";
+import {StyleSheet, Dimensions} from "react-native";
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -28,19 +28,16 @@ const styles = StyleSheet.create({
     paddingBottom:20,
     width:wp('80%'),
     height:Platform.OS === "android" ? hp('50%') : hp('43%'),
-    alignSelf:'center',
-    
-   
+    alignSelf:'center', 
   },
 
   imageHolder: {
     alignItems: "center",
     justifyContent:'center',
     alignSelf:'center',
- 
   },
 
-  titleText: {
+    titleText: {
     fontSize: 16,
     color: '#3858CF',
     marginTop: 10,
@@ -221,8 +218,8 @@ optionTextCover:{
 
 },
 bikeImg:{
-width:40,
-height:40,
+width:20,
+height:20,
 resizeMode:'contain'
 },
 optionText2: {
@@ -246,25 +243,25 @@ itemCover:{
 iconCircle: {
   borderColor: "#3858CF",
   borderWidth: 0,
-  width: 40,
-  height: 40,
+  width: 20,
+  height: 20,
   borderRadius: 15,
   alignSelf: "center",
   justifyContent: "center",
   marginRight:20,
-  marginTop:-6,
+  // marginTop:-6,
  
 },
 iconCircle2: {
   borderColor: "#BDBDBD",
   borderWidth: 0,
-  width: 40,
-  height: 40,
+  width: 20,
+  height: 20,
   borderRadius: 15,
   alignSelf: "center",
   justifyContent: "center",
   marginRight:20,
-  marginTop:-6,
+  // marginTop:-6,
   
   
 },
