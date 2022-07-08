@@ -186,18 +186,19 @@ const AddProduct = (props) => {
                                         <FIcon name="minus" size={12} color="#9CA3AF" />
                                     </TouchableOpacity>
                                     <View style={styles.increaseText}>
-                                        <TextInput
+                                        <Text  style={styles.label2}>{cartAmount.toString()}</Text>
+                                        {/* <TextInput
                                             style={styles.label2}
-                                            value={cartAmount.toString()}
+                                            value=
                                             onChangeText={(val) => {
-                                                // if (result.quantity_available >= val) {
-                                                val = val.replaceAll(regex, "")
-                                                setCartAmount(val.replace(/[^0-9]/g, ''))
+                                                 // if (result.quantity_available >= val) {
+                                                    val = val.replaceAll(regex, "")
+                                                    setCartAmount(val.replace(/[^0-9]/g, ''))
                                                 // }
                                             }
                                             }
                                             keyboardType="numeric"
-                                        />
+                                        /> */}
 
                                     </View>
                                     <TouchableOpacity style={styles.decrease} onPress={increaseCart}>

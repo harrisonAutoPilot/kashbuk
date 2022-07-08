@@ -30,8 +30,10 @@ const Debtor = ({ props, navigation }) => {
       setShowRetrieve(true)
       
       // alert("Sorry wrong credential Please contact admin : 08062585929")
-        
-       
+       }
+
+      const getDebtor =() =>{
+        props.navigation.navigate("UpdateDebtor")
        }
       
 
@@ -77,8 +79,10 @@ const Debtor = ({ props, navigation }) => {
         const redirectToNavigationDetail = props.navigation;
     
         return (
+            <TouchableOpacity onPress={getDebtor}>
             <View style={styles.listCover}>
-            <View style={styles.listLeft}>
+       
+          <View style={styles.listLeft}>
                 <Text style={styles.nameText}>Good is Good Motor</Text>
                 <Text style={styles.purposeText}>For transport fair</Text>
             </View>
@@ -86,7 +90,9 @@ const Debtor = ({ props, navigation }) => {
             <Text style={styles.priceText}>₦ 20,000</Text>
                
             </View>
+         
         </View>
+        </TouchableOpacity>
 
         )
     };

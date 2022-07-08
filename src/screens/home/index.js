@@ -1,4 +1,4 @@
-import React, { useState,useRef, Easing,useEffect, useCallback } from "react";
+import React, { useState,useRef, Easing,useEffect,useFocusEffect, useCallback } from "react";
 import {
     View, Text, Image,Button, TouchableOpacity, Animated,FlatList,SafeAreaView,animated, Keyboard,
     StatusBar,
@@ -21,6 +21,7 @@ const Home = (props) => {
     const [pinVisibilityConfirm, setPinVisibilityConfirm] = useState(true);
     const [loader, setLoader] = useState(false);
     const [showBtn, setShowBtn] = useState(true)
+    const [display, setDisplay] = useState(false)
     const [isKeyboardVisible, setKeyboardVisible] = useState(false);
     const animationValue = useRef(new Animated.Value(0)).current;
     const scaleValue = useRef(0);
@@ -28,6 +29,7 @@ const Home = (props) => {
 
     const runAnimationOnClick = () => {
         setShowBtn(!showBtn)
+        setDisplay(!display)
         scaleValue.current = scaleValue.current === 0 ? 1 : 0;
         Animated.spring(animationValue, {
           toValue: scaleValue.current,
@@ -44,7 +46,8 @@ const Home = (props) => {
         }).start();
       };
 
-      
+
+
     const receipt =()=>{
      props.navigation.navigate('Receipt')
     }
@@ -55,9 +58,10 @@ const Home = (props) => {
    const changeAll =() => {
    setViewAll(false);
    setViewLast(true)
-
-
    }
+
+
+
    const changeLast =() => {
     setViewAll(true);
     setViewLast(false)
@@ -86,7 +90,7 @@ const Home = (props) => {
                    </TouchableOpacity>
                 </View>
                 <View style={styles.itemRightCover}>
-                    <View >
+                    <View style={styles.amountCover}>
                         <Text style={styles.itemAmount}>₦ {item.amount}</Text>
                     </View>
                     <View style={styles.modeCover}>
@@ -185,59 +189,65 @@ const Home = (props) => {
            
         </View>
         <View>
-                    <View style={styles.flowCover}>
-                    <Animated.View
-                            style={{
-                            height: 220,
-                            width: 180,
-                            borderRadius:10,
-                            // backgroundColor: "red",
-                            transform: [
-                                {
-                                scale: animationValue.interpolate({
-                                    inputRange: [0, 1],
-                                    outputRange: [0, 1]
-                                })
-                                }
-                            ]
-                            }}
-                        >
+            {
+                display ?
+                <View style={styles.flowCover}>
+                <Animated.View
+                        style={{
+                        height: 220,
+                        width: 180,
+                        borderRadius:10,
+                        // backgroundColor: "red",
+                        transform: [
+                            {
+                            scale: animationValue.interpolate({
+                                inputRange: [0, 1],
+                                outputRange: [0, 1]
+                            })
+                            }
+                        ]
+                        }}
+                    >
 
-                        <TouchableOpacity onPress={() => props.navigation.navigate('AddMultiple')}>
-                        <View style={styles.smBtnOne}>
-                            <View style={styles.smBtnInner}>
-                            <Image style={styles.smLogo} source={require("@Assets/image/add_icon.png")} />
-                            </View>
-                          <View style={styles.innerTextCover}>
-                             <Text style={styles.innerText}>Send a quote</Text> 
-                          </View>
+                    <TouchableOpacity onPress={() => props.navigation.navigate('CreateNewQuote')}>
+                    <View style={styles.smBtnOne}>
+                        <View style={styles.smBtnInner}>
+                        <Image style={styles.smLogo} source={require("@Assets/image/add_icon.png")} />
                         </View>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={() => props.navigation.navigate('AddMultipleExpenses')}>
-                        <View style={styles.smBtnTwo}>
-                            <View style={styles.smBtnInner}>
-                            <Image style={styles.smLogo} source={require("@Assets/image/arcticons_myexpenses.png")} />
-                            </View>
-                          <View style={styles.innerTextCover}>
-                             <Text style={styles.innerText}>Record an expense</Text> 
-                          </View>
-                        </View>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={() => props.navigation.navigate('AddMultiple')}>
-                        <View style={styles.smBtnThree}>
-                            <View style={styles.smBtnInner}>
-                            <Image style={styles.smLogo} source={require("@Assets/image/arcticons_aviasales.png")} />
-                            </View>
-                          
-                          <View style={styles.innerTextCover}>
-                             <Text style={styles.innerText}>Record a sale</Text> 
-                          </View>
-                          
-                        </View>
-                        </TouchableOpacity>
-
-                </Animated.View>
+                      <View style={styles.innerTextCover}>
+                         <Text style={styles.innerText}>Send a quote</Text> 
+                      </View>
                     </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => props.navigation.navigate('AddExpenses')}>
+                    <View style={styles.smBtnTwo}>
+                        <View style={styles.smBtnInner}>
+                        <Image style={styles.smLogo} source={require("@Assets/image/arcticons_myexpenses.png")} />
+                        </View>
+                      <View style={styles.innerTextCover}>
+                         <Text style={styles.innerText}>Record an expense</Text> 
+                      </View>
+                    </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => props.navigation.navigate('AddItem')}>
+                    <View style={styles.smBtnThree}>
+                        <View style={styles.smBtnInner}>
+                        <Image style={styles.smLogo} source={require("@Assets/image/arcticons_aviasales.png")} />
+                        </View>
+                      
+                      <View style={styles.innerTextCover}>
+                         <Text style={styles.innerText}>Record a sale</Text> 
+                      </View>
+                      
+                    </View>
+                    </TouchableOpacity>
+
+            </Animated.View>
+                </View>
+                :
+                null
+            }
+                   
       
     </View>
        { showBtn ?

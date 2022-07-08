@@ -14,11 +14,11 @@ const data = [
  
 ];
 
-const  PaymentLevel = () => {
+const  PaymentLevel = (props) => {
   const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
 
-  const renderLabel = () => {
+  const renderLabel = (props) => {
     if (value || isFocus) {
       return (
         <Text style={[styles.label, isFocus && { color: '#0F8D8F' }]}>
@@ -49,17 +49,10 @@ const  PaymentLevel = () => {
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
         onChange={item => {
+          props.passData(item.value);
           setValue(item.value);
-          setIsFocus(false);
+          setIsFocus(false);  
         }}
-        // renderLeftIcon={() => (
-        //   <AntDesign
-        //     style={styles.icon}
-        //     color={isFocus ? '#0F8D8F' : 'black'}
-        //     name="Safety"
-        //     size={20}
-        //   />
-        // )}
       />
     </View>
   );
@@ -107,7 +100,6 @@ const styles = StyleSheet.create({
   },
   selectedTextStyle: {
     fontSize: 12,
-    fontFamily: "Urbanist-SemiBold",
   },
   iconStyle: {
     width: 20,

@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   },
   topSmTitleText:{
     fontSize: 14,
-    fontFamily: "Helvetica",
+    fontFamily: "Urbanist-SemiBold",
    lineHeight: 16,
    color: "#000000",
    letterSpacing: 0.3,
@@ -56,15 +56,23 @@ const styles = StyleSheet.create({
   },
   itemList:{
     fontSize: 14,
-    fontFamily: "Helvetica",
+    fontFamily: "Urbanist-SemiBold",
    lineHeight: 20,
    color: "#9CA3AF",
    letterSpacing: 0.3,
    fontWeight:'400',
   },
+  placeholder:{
+    fontSize: 14,
+    fontFamily: "Urbanist-SemiBold",
+   lineHeight: 20,
+   color: "red",
+   letterSpacing: 0.3,
+   fontWeight:'400',
+  },
   itemAmount:{
     fontSize: 14,
-    fontFamily: "Helvetica",
+    fontFamily: "Urbanist-SemiBold",
    lineHeight: 20,
    color: "#6B7280",
    letterSpacing: 0.3,
@@ -73,9 +81,7 @@ const styles = StyleSheet.create({
   bottomCover:{
     width:wp('100%'),
     height:hp('80%'),
-    // backgroundColor:'rgba(15, 141, 143, 0.15)',
-    elevation:2,
-    shadowColor:'#f5f6f7'
+    backgroundColor:'rgba(15, 141, 143, 0.15)'
   },
   topCover:{
     flexDirection:'row',
@@ -87,34 +93,24 @@ const styles = StyleSheet.create({
 
   },
   addText:{
-    fontSize: 16,
-    fontFamily: "Helvetica",
-   lineHeight: 28,
+    fontSize: 14,
+    fontFamily: "Urbanist-SemiBold",
+   lineHeight: 21,
    color: "#000",
    letterSpacing: 0.3,
    fontWeight:'400',
+   paddingLeft:10,
   },
-  thumbOnStyle:{
-backgroundColor:'#0F8D8F',
-
-  },
-  labelCover:{
+  textInput1:{
+    backgroundColor:'#fff',
+    borderRadius:5,
+    padding:10,
     width:wp('90%'),
     alignSelf:'center',
-padding:3,
+    paddingLeft:25,
+    marginBottom:20
   },
-  thumbOffStyle:{
-    backgroundColor:'gray',
-    
-      },
-  trackOnStyle:{
-    borderColor:'#0F8D8F',
-    borderWidth:1, 
-  },
-  trackOffStyle:{
-    borderColor:'gray',
-    borderWidth:1, 
-  },
+
   textInput:{
     backgroundColor:'#fff',
     borderRadius:5,
@@ -125,7 +121,7 @@ padding:3,
     width:wp('90%'),
     alignSelf:'center',
     paddingLeft:25,
-    marginBottom:1
+    marginBottom:10
   },
   dateContainer:{
     flexDirection:'row',
@@ -133,18 +129,20 @@ padding:3,
     width:wp('95%'),
     justifyContent:'space-between',
     alignSelf:'center',
+    marginTop:-10
   },
   date1:{
     flexDirection:'row',
     justifyContent:'space-between',
     backgroundColor:'#fff',
+    fontFamily: "Urbanist-SemiBold",
     borderRadius:5,
     padding:10,
     width:wp('40%'),
     alignSelf:'center',
     height:40,
     alignItems:'center',
-    marginBottom:20
+    marginBottom:0
   },
   pickedDate:{
     fontSize:11,
@@ -155,7 +153,7 @@ padding:3,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    marginLeft:14,
+    marginLeft:Platform.OS === 'android' ? 14 : 32,
 },
 cartAmountView: {
     flexDirection: "row",
@@ -173,6 +171,9 @@ cartAmountView: {
     shadowRadius: 3.84,
     height: 50
 },
+datePicker:{
+  fontFamily: "Urbanist-SemiBold",
+},
 decreaseIconCartView: {
     flexDirection: "row",
     // marginTop: 54,
@@ -180,7 +181,7 @@ decreaseIconCartView: {
 },
 amountText: {
     fontSize: 22,
-    fontFamily: "Urbanist-Medium",
+    fontFamily: "Urbanist-SemiBold",
     lineHeight: 30,
     color: "#469D00",
     letterSpacing: 0.3,
@@ -205,16 +206,18 @@ decrease: {
 
 },
 increaseText: {
-    // paddingVertical: 11,
-     paddingLeft:4,
-    // paddingRight:-16,
-    alignSelf:'center',
-    textAlign:'center',
-    marginRight:-5,   
+  // paddingVertical: 11,
+  //  paddingLeft:4,
+  // paddingRight:-16,
+  alignSelf:'center',
+  textAlign:'center',
+  marginRight:7, 
+  marginLeft:7,
+    
 },
 label2:{
   fontSize: 14,
-    fontFamily: "Urbanist-Medium",
+    fontFamily: "Urbanist-SemiBold",
     // lineHeight: 21,
     color: "#0F8D8F",
     letterSpacing: 0.3,
@@ -223,19 +226,11 @@ label2:{
 },
 label3:{
   fontSize: 10,
-    fontFamily: "Urbanist-Medium",
+    fontFamily: "Urbanist-SemiBold",
     lineHeight: 20,
     color: "#9CA3AF",
     letterSpacing: 0.3,
-    fontWeight:'400'
-},
-labelText:{
-  fontSize: 12,
-  fontFamily: "Urbanist-Medium",
-  lineHeight: 20,
-  color: "#111827",
-  letterSpacing: 0.3,
-  fontWeight:'400'
+    fontWeight:'700'
 },
 optionTextView: {
   marginLeft: 16,
@@ -247,7 +242,7 @@ optionTextView2: {
 
 },
 optionText: {
-  fontFamily: "Urbanist-Regular",
+  fontFamily: "Urbanist-SemiBold",
   fontSize: 14,
   lineHeight: 20,
   letterSpacing: 0.3,
@@ -317,7 +312,7 @@ selectContainer:{
   paddingHorizontal:10,
 },
 btnCover:{
-  paddingVertical:10,
+  paddingVertical:20,
 },
 createBtn:{
   width:wp('88%'),
@@ -328,6 +323,7 @@ createBtn:{
   alignSelf:'center',
   padding:10,
   borderRadius:6,
+  marginBottom:15,
 },
 createBtn1:{
   width:wp('70%'),
@@ -343,7 +339,7 @@ btnText:{
   color:'#0F8D8F',
   textAlign:'center',
   fontSize: 14,
-  fontFamily: "Urbanist-Medium",
+  fontFamily: "Urbanist-SemiBold",
   lineHeight: 21,
   fontWeight:'500',
   letterSpacing: 0.3,

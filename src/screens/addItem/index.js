@@ -4,7 +4,7 @@ import {
     StatusBar,
 } from "react-native";
 import { Header, NavHeaderWhite, BtnLg, GeneralStatusBarColor } from "@Component";
-import DateTimePicker from '@react-native-community/datetimepicker';
+import DatePicker from "react-native-modal-datetime-picker";
 import Toast from 'react-native-toast-message';
 import commafy from "@Helper/Commafy";
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
@@ -14,6 +14,7 @@ import PaymentLevel from "./selectLevel";
 import ToggleSwitch from 'toggle-switch-react-native'
 import Fcon from 'react-native-vector-icons/Feather';
 import { registerSchema } from "@Helper/Schema";
+import Intro from "./intro";
 
 import styles from "./style";
 import data from "./data";
@@ -36,27 +37,45 @@ const AddItem = (props) => {
     const [newValue, setnewValue] = useState(1);
     const [adding, setAdding] = useState(false);
     const [childData, setChildData] = useState("");
+    const [isDateTimePickerVisible, setIsDateTimePickerVisible] = useState(false);
+    const [showIntro, setShowIntro] = useState(true);
 
 
 
-    const showPicker = () => {
-        setIsPickerShow(true);
-    };
+
+    const getIntro = (id) => {
+        console.log(id);
+        setShowIntro(false)
+      }
+  
+
+  // this is for the date
+  const showDateTimePicker = () => {
+    setIsDateTimePickerVisible(true)
+      };
+  const hideDateTimePicker = () => {
+    setIsDateTimePickerVisible(false)
+      };
+     
+    const  handleDatePicked = date => {
+        console.log("A date has been picked: ", date);
+        setDate(date)
+        hideDateTimePicker();
+      };
+     
 
     const passData = (childData) => {
         setChildData(childData);
        
       };
 
-    const onChange = (event, value) => {
-        setDate(value);
-        console.log(value);
-        if (Platform.OS === 'android') {
-            setIsPickerShow(false);
-        }
-    };
+   
     // this is to return back to the Home Screen
     const returnBack = () => {
+        props.navigation.navigate('Homee')
+    }
+
+    const addMultiple = () => {
         props.navigation.navigate('AddMultiple')
     }
 
@@ -175,9 +194,10 @@ const AddItem = (props) => {
                                         <FIcon name="minus" size={12} color="#9CA3AF" />
                                     </TouchableOpacity>
                                     <View style={styles.increaseText}>
-                                        <TextInput
+                                        <Text  style={styles.label2}>{cartAmount.toString()}</Text>
+                                        {/* <TextInput
                                             style={styles.label2}
-                                            value={cartAmount.toString()}
+                                            value=
                                             onChangeText={(val) => {
                                                  // if (result.quantity_available >= val) {
                                                     val = val.replaceAll(regex, "")
@@ -186,7 +206,7 @@ const AddItem = (props) => {
                                             }
                                             }
                                             keyboardType="numeric"
-                                        />
+                                        /> */}
 
                                     </View>
                                     <TouchableOpacity style={styles.decrease} onPress={increaseCart}>
@@ -200,26 +220,20 @@ const AddItem = (props) => {
                         </View>
                         <View style={styles.date1}>
                             {/* The date picker */}
-                            {isPickerShow && (
-                                <DateTimePicker
-                                    value={date}
-                                    mode={'date'}
-                                    display={Platform.OS === 'ios' ? 'spinner' : 'calendar'}
-                                    is24Hour={true}
-                                    onChange={onChange}
-                                    style={styles.datePicker}
+                            <DatePicker
+                                    isVisible={isDateTimePickerVisible}
+                                    onConfirm={handleDatePicked}
+                                    onCancel={hideDateTimePicker}
                                 />
-                            )}
+                         
                             <View>
                                 <Text style={styles.pickedDate}>{date.toDateString()}</Text>
                             </View>
 
-
-                            {!isPickerShow && (
-                                <TouchableOpacity onPress={showPicker}>
-                                    <Fcon name="calendar" size={14} color="#000" style={{ paddingLeft: 5 }} />
-                                </TouchableOpacity>
-                            )}
+                        
+                              <TouchableOpacity onPress={showDateTimePicker}>
+                              <Fcon name="calendar" size={14} color="#000" style={{ paddingLeft: 5 }} />
+                             </TouchableOpacity>
                         </View>
                     </View>
                     <View style={styles.textInput}>
@@ -256,7 +270,7 @@ const AddItem = (props) => {
                     </View>
                     <View style={styles.bottomCover}>
                     <View style={styles.btnCover}>
-                        <BtnLg title="Add more Items" style={styles.createBtn1} onPress={returnBack} styles={styles.btnText} />
+                        <BtnLg title="Add more Items" style={styles.createBtn1} onPress={addMultiple} styles={styles.btnText} />
                     </View>
                     <View style={styles.topCover}>
                         <Text style={styles.addText}>Add Customer Details</Text>
@@ -321,7 +335,7 @@ const AddItem = (props) => {
                     <View style={{ marginTop: 0 }}>
                        
                         <View style={styles.btnCover}>
-                            <BtnLg title="Save" />
+                            <BtnLg title="Save"  onPress={() => props.navigation.navigate("Homee")} />
                             <View style={styles.raiseCover}>
                                 <Icon name="document-text" size={20} color="rgba(26, 135, 221, 0.7)" />
                                 <Text style={styles.raiseText}>Raise a Receipt</Text>
@@ -332,7 +346,10 @@ const AddItem = (props) => {
 
                 </View>
            
-
+                <Intro
+                visibleCurrency={showIntro}
+                returnBack={(id) => getIntro(id)}
+            />
             </View>
         </SafeAreaView>
     )

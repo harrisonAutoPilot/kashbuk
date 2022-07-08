@@ -19,7 +19,10 @@ const Creditor = ({ props, navigation }) => {
     const { navigate } = props.navigation; 
 
   
-   
+    const getCreditor =() =>{
+        props.navigation.navigate("UpdateCreditor")
+       }
+      
    
    
     const [activeId, setActiveId] = useState(1);
@@ -34,6 +37,7 @@ const Creditor = ({ props, navigation }) => {
         const redirectToNavigationDetail = props.navigation;
     
         return (
+            <TouchableOpacity onPress={getCreditor}>
             <View style={styles.listCover}>
             <View style={styles.listLeft}>
                 <Text style={styles.nameText}>Good is Good Motor</Text>
@@ -44,7 +48,7 @@ const Creditor = ({ props, navigation }) => {
                
             </View>
         </View>
-
+        </TouchableOpacity>
         )
     };
  

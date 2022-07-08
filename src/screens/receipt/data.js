@@ -1,63 +1,80 @@
 export default data = [
     {
         id: "1",
-        menu: "Wrist Watch",
-        amount: "1,500"
+        menu: "3KVA 24V Inverter",
+        price:"150,50",
+        quantity:"1",
+        amount: "150,500"
     },
     {
         id: "2",
-        menu: "Bone straight 32 inches black",
-        time:"11:24 am",
-        mode:"Cash",
-        amount: "2,300"
+        menu: "200Ah Quanta Battery",
+        price:"180,000",
+        quantity:"4",
+        amount: "720,000"
     },
     {
         id: "3",
-        menu: "Microwave",
-        time:"1:24 pm",
-        mode:"Online",
-        amount: "3,500"
+        menu: "Solar Panel",
+        price:"45,000",
+        quantity:"8",
+        amount: "360,000"
     },
     {
         id: "4",
-        menu: "Electric Stove",
-        time:"2:24 pm",
-        mode:"Cash",
-        amount: "19,500"
+        menu: "Battery Rack",
+        price:"13,250",
+        quantity:"2",
+        amount: "44,500"
     },
     {
         id: "5",
-        menu: "Clothes",
-        time:"4:24 pm",
-        mode:"pos",
-        amount: "25,800"
+        menu: "Charge Controller",
+        time:"2:24 pm",
+        price:"19,500",
+        quantity:"1",
+        amount: "80,500"
     },
     {
         id: "6",
-        menu: "Transportation",
-        time:"5:24 pm",
-        mode:"Online",
-        amount: "700"
+        menu: "6MM 3 core wire for the panel",
+        time:"2:24 pm",
+        price:"19,500",
+        quantity:"1",
+        amount: "80,500"
     },
     {
         id: "7",
-        menu: "Reading Chair",
-        time:"5:24 pm",
-        mode:"Cash",
-        amount: "10,000"
+        menu: "Installation fee",
+        time:"4:24 pm",
+        amount: "60,800"
     },
-    {
-        id: "8",
-        menu: "Textbook",
-        time:"5:24 pm",
-        mode:"Online",
-        amount: "700"
-    },
-    {
-        id: "9",
-        menu: "Blender",
-        time:"5:24 pm",
-        mode:"Online",
-        amount: "1,400"
-    }
+    // {
+    //     id: "6",
+    //     menu: "Transportation",
+    //     time:"5:24 pm",
+    //     mode:"Online",
+    //     amount: "700"
+    // },
+    // {
+    //     id: "7",
+    //     menu: "Reading Chair",
+    //     time:"5:24 pm",
+    //     mode:"Cash",
+    //     amount: "10,000"
+    // },
+    // {
+    //     id: "8",
+    //     menu: "Textbook",
+    //     time:"5:24 pm",
+    //     mode:"Online",
+    //     amount: "700"
+    // },
+    // {
+    //     id: "9",
+    //     menu: "Blender",
+    //     time:"5:24 pm",
+    //     mode:"Online",
+    //     amount: "1,400"
+    // }
 ]

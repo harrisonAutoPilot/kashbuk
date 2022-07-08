@@ -198,7 +198,7 @@ export default styles = StyleSheet.create({
         justifyContent:'space-between',
         width:wp('90%'),
         alignSelf:'center',
-        paddingVertical:5,
+        paddingVertical:10,
         borderBottomWidth:1,
         borderColor:"#E5E7EB"
       },

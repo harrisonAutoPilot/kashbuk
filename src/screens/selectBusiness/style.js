@@ -352,7 +352,7 @@ optionIconView2: {
   justifyContent: "flex-start"
 },
 optionText: {
-  fontFamily: "Urbanist-SemiBold",
+  fontFamily: "Urbanist-Regular",
   fontSize: 16,
   width:220,
   lineHeight: 24,
@@ -372,8 +372,8 @@ height:20,
 resizeMode:'contain'
 },
 optionText2: {
-  fontFamily: "Urbanist-SemiBold",
-  width:280,
+  fontFamily: "Urbanist-Regular",
+  width:260,
   fontSize: 16,
   lineHeight: 24,
   letterSpacing: 0.3,

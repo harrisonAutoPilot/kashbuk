@@ -1,6 +1,6 @@
 import React, { useState, useRef, Easing, useEffect, useCallback } from "react";
 import {
-    View, Text, TextInput, Image, Button, TouchableOpacity, Animated, FlatList, SafeAreaView, animated, Keyboard,
+    View, Text, TextInput, Image, Button,ScrollView, TouchableOpacity, Animated, FlatList, SafeAreaView, animated, Keyboard,
     StatusBar,
 } from "react-native";
 import { Header, NavHeaderWhiteTwo, BtnLg, GeneralStatusBarColor } from "@Component";
@@ -11,14 +11,13 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import FIcon from 'react-native-vector-icons/Feather';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Acon from 'react-native-vector-icons/AntDesign';
-import PaymentLevel from "./selectLevel";
 import ToggleSwitch from 'toggle-switch-react-native'
 import Fcon from 'react-native-vector-icons/Feather';
 import { registerSchema } from "@Helper/Schema";
 
 import styles from "./style";
 import data from "./data";
-import payment from "./payment";
+
 
 
 const Receipt = (props) => {
@@ -36,6 +35,10 @@ const Receipt = (props) => {
     const [cartAmount, setCartAmount] = useState(1);
     const [newValue, setnewValue] = useState(1);
     const [adding, setAdding] = useState(false);
+    const flatListRef = useRef();
+
+   
+    const toTop = () => flatListRef.current.scrollToOffset({ animated: true, offset: 0 })
 
 
 
@@ -84,32 +87,6 @@ const Receipt = (props) => {
         setErr("")
     }
 
-    const renderItem = ({ item }) => (
-        <View style={[styles.optionView, item.id === "1" ? styles.optionViewBetween1 : styles.optionViewBetween2]}>
-
-            <TouchableOpacity style={active === item.id ? styles.optionViewCover : styles.optionViewCover2} onPress={() => { selectUserType(item.id); setCategory(item.title); setErrMsg("") }}>
-                <View >
-                    {active && active === item.id ?
-                        <View style={styles.iconCircle}>
-                            <FIcon name="check" size={14} color="#fff" style={styles.icon} />
-                        </View>
-                        :
-                        <View style={styles.iconCircle2}>
-                        </View>
-                    }
-                </View>
-                <View style={active === item.id ? styles.optionTextView : styles.optionTextView2} >
-                    <Text style={styles.optionText}>{item.title}</Text>
-                    {/* <View style={styles.optionMiniTextView}>
-                        <Text style={styles.itemDetails}>{item.id == "1" ? ` Balance: ₦${wallet.balance ? commafy(wallet.balance) : 0}`
-                            : item.id == "2" ? "Pay on Delivery" : "Remedial Health Solutions Ltd"}</Text>
-                    </View> */}
-                </View>
-            </TouchableOpacity>
-
-        </View>
-    );
-
 
 
     const ListView = (props) => {
@@ -117,18 +94,18 @@ const Receipt = (props) => {
         const redirectToNavigationDetail = props.navigation;
 
         return (
-            <View style={styles.listItem}>
-                <Text style={styles.itemList}>{item.menu}</Text>
-                <View>
-                    <View style={styles.rightCover}>
-                        <Text style={styles.itemAmount}>{item.amount}</Text>
-                        <TouchableOpacity >
-                            <Fcon name="x" size={18} color="#6B7280" style={{ paddingLeft: 5 }} />
-                        </TouchableOpacity>
-                    </View>
-
-                </View>
+            <View style={styles.listContainer}>
+            <View style={styles.leftList}>
+               <Text style={styles.descTopText} numberOfLines={1}>{item.menu}</Text> 
+               {/* <Text style={styles.descBottomText} numberOfLines={1}>payment for the wedding gown</Text>  */}
             </View>
+            <View style={styles.rightList}>
+               <Text style={styles.rightValues}>{item.price}</Text> 
+               <Text style={styles.rightValues}>{item.quantity}</Text>
+               <Text style={styles.rightValues}>{item.amount}</Text>
+            </View>
+        </View>
+                 
         )
     };
 
@@ -137,137 +114,119 @@ const Receipt = (props) => {
         <SafeAreaView style={{ flex: 1 }}>
             <View style={styles.container}>
             <NavHeaderWhiteTwo title="Receipt" onPress={returnBack} />
+            <ScrollView
+                indicatorStyle="white"
+                contentContainerStyle={styles.scrollStyleZ}
+                >
                 <View style={styles.topSmTitle}>
-                    <Text style={styles.topSmTitleText}>Create Receipt Product / Service</Text>
+                    <Text style={styles.topSmTitleText}>No.<Text style={styles.topSmTitleTextL}> 0000</Text> </Text>
+                    <Text style={styles.topSmTitleText}>| Date <Text style={styles.topSmTitleTextL}> 00.00.2022</Text></Text>
+                </View>
+                <View style={styles.addressCover}>
+                        <View style={styles.addressContainer}>
+                            <Text style={styles.toText}>From</Text>
+                            <Text style={styles.clientNameText}>KashBuk</Text>
+                            <Text style={styles.address}> 
+                                flat 14, block 4 fct wuse zone 6 fct abuja
+                            </Text>
+                        </View>
+                        <View style={styles.addressContainer}>
+                            <Text style={styles.toText}>To</Text>
+                            <Text style={styles.clientNameText}>Client Name</Text>
+                            <Text style={styles.address}> 
+                                suit 11, block 18, Bannex plaza, fct abuja
+                            </Text>
+                        </View>
                 </View>
 
+<View style={styles.descriptionCover}>
+    <View style={styles.decriptionContainerL}>
+        <Text style={styles.descripTitle}>Description</Text>
+    </View>
+    <View style={styles.decriptionContainerR}>
+    <Text style={styles.descripTitle}>quantity</Text>
+        <Text style={styles.descripTitle}>rate</Text>
+        <Text style={styles.descripTitle}>amount</Text>
+    </View>
+</View>
 
-                <View style={styles.recordsContainer}>
-                    <View>
+       
+            <View style={{padding:10, paddingLeft:-10}}>
+            {/* <FlatList
+                  showsVerticalScrollIndicator={false}
+                  scrollEnabled={false}
+                  data={data}
+                  keyExtractor={item => item.id}
+                  renderItem={ListView}
+                  ListFooterComponent={<View style={{ height: 50 }} />}
+                  columnWrapperStyle={styles.column}
+              /> */}
 
-                        <TextInput
-                            style={styles.textInput}
-                            placeholder="Item name"
-                            onChangeText={itemName => setItemName(itemName)}
-                            defaultValue={itemName}
-                        />
-
-                        <TextInput
-                            style={styles.textInput}
-                            placeholder="cost price"
-                            keyboardType="number-pad"
-                            onChangeText={itemAmount => setItemAmount(itemAmount)}
-                            defaultValue={itemAmount}
-                        />
+            {data.map((item) => (
+                <View style={styles.listContainer}>
+                    <View style={styles.leftList}>
+                        <Text style={styles.descTopText}>{item.menu}</Text> 
                     </View>
-
-                    <View style={styles.dateContainer}>
-                    <TextInput
-                            style={styles.textInputSm}
-                            placeholder="margin %"
-                            keyboardType="number-pad"
-                            onChangeText={itemAmount => setItemAmount(itemAmount)}
-                            defaultValue={itemAmount}
-                        />
-                        <TextInput
-                            style={styles.textInputSm}
-                            placeholder="setting price"
-                            keyboardType="number-pad"
-                            onChangeText={itemAmount => setItemAmount(itemAmount)}
-                            defaultValue={itemAmount}
-                        />
+                    <View style={styles.rightList}>
+                    <Text style={styles.rightValues3}>{item.quantity}</Text>
+                        <Text style={styles.rightValues1}>{item.price}</Text> 
+                        <Text style={styles.rightValues2}>{item.amount}</Text>
                     </View>
-                    <View style={styles.quantityCover}>
-                          
-                           <Text style={styles.label3}>Quantity</Text>
-                            <View style={styles.increaseCartMainAmountView}>
-                                <View style={styles.cartAmountView}>
-                                    <TouchableOpacity style={styles.increase} onPress={decreaseCart}>
-                                        <FIcon name="minus" size={12} color="#9CA3AF" />
-                                    </TouchableOpacity>
-                                    <View style={styles.increaseText}>
-                                        <TextInput
-                                            style={styles.label2}
-                                            value={cartAmount.toString()}
-                                            onChangeText={(val) => {
-                                                // if (result.quantity_available >= val) {
-                                                val = val.replaceAll(regex, "")
-                                                setCartAmount(val.replace(/[^0-9]/g, ''))
-                                                // }
-                                            }
-                                            }
-                                            keyboardType="numeric"
-                                        />
+                </View>
+            ))}
 
-                                    </View>
-                                    <TouchableOpacity style={styles.decrease} onPress={increaseCart}>
-                                        <FIcon name="plus" size={12} color="#9CA3AF" />
-                                    </TouchableOpacity>
-                                </View>
-                              
-                            </View>
+
+                <View style={styles.totalCover}>
+                    <View style={styles.totalTop}>
+                        <Text style={styles.totalTitle1}>Sub total </Text>
+                        <Text style={styles.totalValue}>00,00</Text>
                     </View>
-                    <View style={styles.quantityCover}>
+                    <View style={styles.totalBottom}>
+                    <Text style={styles.totalTitle}>WHT 7.5%</Text>
+                        <Text style={styles.totalValue}>00,00</Text>
+                    </View>
+               </View>
+               <View style={styles.downTotal}>
+                  <View style={styles.totalCap}>
+                    <Text style={styles.totalCapText}>Total</Text>
+                  </View>
+                  <View style={styles.colorTotal}>
+                    <Text style={styles.colorCapText}>€00,00</Text>
+                  </View>
+               </View>
 
-                                {/* The date picker */}
-                                {isPickerShow && (
-                                <DateTimePicker
-                                    value={date}
-                                    mode={'date'}
-                                    display={Platform.OS === 'ios' ? 'spinner' : 'calendar'}
-                                    is24Hour={true}
-                                    onChange={onChange}
-                                    style={styles.datePicker}
-                                />
-                            )}
-                            <View>
-                                <Text style={styles.pickedDate}>{date.toDateString()}</Text>
-                            </View>
+               <View style={styles.paymentCaptionCover}>
+                <Text style={styles.paymentCaption}>
+                Payment INFO
+                </Text>
+               </View>
+               <View style={styles.addressCover}>
+                        <View style={styles.addressContainer}>
+                            
+                            <Text style={styles.clientNameText}>Account Name </Text>
+                            <Text style={styles.address}>kashBuk Tech Solutions</Text>
 
-
-                            {!isPickerShow && (
-                                <TouchableOpacity onPress={showPicker}>
-                                    <Fcon name="calendar" size={14} color="#000" style={{ paddingLeft: 5 }} />
-                                </TouchableOpacity>
-                            )}
-
-                        </View>
-                       
-                    {errMsg ? <View style={styles.errMainView}>
-                        <Text style={styles.failedResponseText}>{errMsg}</Text>
-                    </View> :
-                        null
-                    }
-
-                        <TouchableOpacity style={styles.uploadBtn}>
-                            <Acon name="picture" size={50} color="#4B4EFC" />
-                            <Text style={styles.uploadCaption}>Upload product image or drag and drop</Text>
-                            <Text style={styles.uploadCaptionGray}>PNG, JPG, , GIF Max 5MB</Text>
-                        </TouchableOpacity>
-
-                   
-                       
-                        <View style={styles.btnCover}>
-                            <BtnLg title="Add To Stock" onPress={() => props.navigation.navigate('Record')} />
-                           
-                        </View>
+                            <Text style={styles.clientNameText}>Bank Name</Text>
+                            <Text style={styles.address}>Guaranty Trust Bank</Text>
+       
                     
+                           
+
+                        </View>
+                        <View style={styles.addressContainer}>
+                            <Text style={styles.address}>Payment Terms Payment within 14 days from invoice receipt without deductions</Text>
+                        </View>
                 </View>
-               
-                   
-                    {errMsg ? <View style={styles.errMainView}>
-                        <Text style={styles.failedResponseText}>{errMsg}</Text>
-                    </View> :
-                        null
-                    }
-                       
-                 
-    
-
-
+                <BtnLg title="Send Receipt" style={styles.createBtn1} on styles={styles.btnText} />
+                
             </View>
-        </SafeAreaView>
-    )
+
+</ScrollView>
+ 
+</View>
+
+</SafeAreaView>
+)
 };
 
 export default Receipt;

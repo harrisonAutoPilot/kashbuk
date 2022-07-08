@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
 },
   body5: {
     backgroundColor: '#fff',
-    borderRadius: 4,
+    borderRadius: 10,
     paddingTop: 30,
     paddingBottom:20,
     width:wp('80%'),

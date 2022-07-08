@@ -255,6 +255,9 @@ justifyContent:'flex-end',
     fontWeight:'400',
     opacity: 0.4,
   },
+  amountCover:{
+marginTop:-0,
+  },
   itemAmount:{
     fontSize: 15,
     fontFamily: "Urbanist-SemiBold",
@@ -302,6 +305,7 @@ justifyContent:'flex-end',
     borderRadius:5,
     maxWidth:50,
     justifyContent:'flex-end',
+    marginTop:10,
 
   },
   flowCover:{

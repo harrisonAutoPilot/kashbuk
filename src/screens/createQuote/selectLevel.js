@@ -14,8 +14,9 @@ const data = [
 
 ];
 
-const PaymentLevel = () => {
-  const [value, setValue] = useState(null);
+const PaymentLevel = (props)=> {
+
+  const [value, setValue] = useState("");
   const [isFocus, setIsFocus] = useState(false);
 
   const renderLabel = () => {
@@ -28,6 +29,15 @@ const PaymentLevel = () => {
     }
     return null;
   };
+
+
+  const Check = (value) => {
+    if(value && value ){
+      props.passData(value);
+    }
+   
+  }
+
 
   return (
     <View style={styles.container}>
@@ -45,21 +55,14 @@ const PaymentLevel = () => {
         valueField="value"
         placeholder={!isFocus ? 'Payment Level' : '...'}
         searchPlaceholder="Search..."
-        value={value}
+        value={value.value}
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
         onChange={item => {
+          props.passData(item.value);
           setValue(item.value);
-          setIsFocus(false);
+          setIsFocus(false); 
         }}
-      // renderLeftIcon={() => (
-      //   <AntDesign
-      //     style={styles.icon}
-      //     color={isFocus ? '#0F8D8F' : 'black'}
-      //     name="Safety"
-      //     size={20}
-      //   />
-      // )}
       />
     </View>
   );
@@ -89,8 +92,8 @@ const styles = StyleSheet.create({
   },
   label: {
     position: 'absolute',
-    fontSize: 12,
-    fontFamily: "Helvetica",
+    fontSize: 11,
+    fontFamily: "Urbanist-SemiBold",
     backgroundColor: '#fff',
     lineHeight: 18,
     color: "#0F8D8F",
@@ -102,10 +105,12 @@ const styles = StyleSheet.create({
 
   },
   placeholderStyle: {
-    fontSize: 16,
+    fontSize: 12,
+    fontFamily: "Urbanist-SemiBold",
   },
   selectedTextStyle: {
-    fontSize: 16,
+    fontSize: 12,
+    fontFamily: "Urbanist-SemiBold",
   },
   iconStyle: {
     width: 20,
@@ -113,6 +118,7 @@ const styles = StyleSheet.create({
   },
   inputSearchStyle: {
     height: 40,
-    fontSize: 16,
+    fontSize: 12,
+    fontFamily: "Urbanist-SemiBold",
   },
 });

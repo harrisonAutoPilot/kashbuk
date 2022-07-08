@@ -206,12 +206,14 @@ decrease: {
 
 },
 increaseText: {
-    // paddingVertical: 11,
-     paddingLeft:4,
-    // paddingRight:-16,
-    alignSelf:'center',
-    textAlign:'center',
-    marginRight:-5,   
+  // paddingVertical: 11,
+  //  paddingLeft:4,
+  // paddingRight:-16,
+  alignSelf:'center',
+  textAlign:'center',
+  marginRight:7, 
+  marginLeft:7,
+    
 },
 label2:{
   fontSize: 14,

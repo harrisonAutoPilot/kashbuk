@@ -124,7 +124,7 @@ pinInputView: {
 inputFieldStyle:{
   borderWidth:1,
   borderColor:"#9CA3AF",
-  fontFamily: "Urbanist-SemiBold",
+  fontFamily: "Urbanist-Regular",
   width:wp('80%'),
   paddingLeft:20,
   borderRadius:6,
@@ -135,7 +135,7 @@ inputFieldStyle:{
 inputFieldStyleM:{
   borderWidth:1,
   borderColor:"#9CA3AF",
-  fontFamily: "Urbanist-SemiBold",
+  fontFamily: "Urbanist-Regular",
   width:wp('80%'),
   height:80,
   paddingLeft:20,

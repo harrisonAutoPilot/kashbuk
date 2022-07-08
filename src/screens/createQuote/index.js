@@ -4,14 +4,13 @@ import {
     StatusBar,
 } from "react-native";
 import { Header, NavHeaderWhite, BtnLg, GeneralStatusBarColor } from "@Component";
-import DateTimePicker from '@react-native-community/datetimepicker';
+import DatePicker from "react-native-modal-datetime-picker";
 import Toast from 'react-native-toast-message';
 import commafy from "@Helper/Commafy";
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import FIcon from 'react-native-vector-icons/Feather';
 import Icon from 'react-native-vector-icons/Ionicons';
 import PaymentLevel from "./selectLevel";
-import ToggleSwitch from 'toggle-switch-react-native'
 import Fcon from 'react-native-vector-icons/Feather';
 import { registerSchema } from "@Helper/Schema";
 
@@ -26,7 +25,6 @@ const CreateQuote = (props) => {
     const [active, setActive] = useState(1);
     const [err, setErr] = useState("");
     const [viewAll, setViewAll] = useState(true);
-    const [isOnBlueToggleSwitch, SetIsOnBlueToggleSwitch] = useState(true)
     const [category, setCategory] = useState("");
     const [itemName, setItemName] = useState("");
     const [itemAmount, setItemAmount] = useState("");
@@ -35,25 +33,38 @@ const CreateQuote = (props) => {
     const [cartAmount, setCartAmount] = useState(1);
     const [newValue, setnewValue] = useState(1);
     const [adding, setAdding] = useState(false);
+    const [childData, setChildData] = useState("");
+    const [isDateTimePickerVisible, setIsDateTimePickerVisible] = useState(false);
 
 
 
-    const showPicker = () => {
-        setIsPickerShow(true);
-    };
 
-    const onChange = (event, value) => {
-        setDate(value);
-        console.log(value);
-        if (Platform.OS === 'android') {
-            setIsPickerShow(false);
-        }
-    };
+    // this is for the date
+  const showDateTimePicker = () => {
+    setIsDateTimePickerVisible(true)
+      };
+  const hideDateTimePicker = () => {
+    setIsDateTimePickerVisible(false)
+      };
+     
+    const  handleDatePicked = date => {
+        console.log("A date has been picked: ", date);
+        setDate(date)
+        hideDateTimePicker();
+      };
+     
+
+  
+    const passData = (childData) => {
+        setChildData(childData);
+       
+      };
+
     // this is to return back to the Home Screen
     const returnBack = () => {
-        props.navigation.navigate('AddMultiple')
+        props.navigation.navigate('TabNavigator')
     }
-    const regex = new RegExp("^0+(?!$)", 'g');
+
     // const { status, errors } = useSelector((state) => state.auth);
     const dismissKeyboard = () => Keyboard.dismiss();
 
@@ -70,13 +81,15 @@ const CreateQuote = (props) => {
         setCartAmount(cartAmount + 1)
     };
 
+  const addItemBtn = () => {
+        props.navigation.navigate('AddItem')
+        }
+
     const decreaseCart = () => {
         // setErr("")
         if (cartAmount > 1) return setCartAmount(cartAmount - 1);
     };
-    const onToggle = (isOn) => {
-        console.log("Changed to " + isOn);
-    }
+    const regex = new RegExp("^0+(?!$)", 'g');
 
     const selectUserType = id => {
         setActive(id);
@@ -134,10 +147,11 @@ const CreateQuote = (props) => {
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
+            <StatusBar backgroundColor={'transparent'} barStyle={'dark-content'} translucent={true} />  
             <View style={styles.container}>
                 <NavHeaderWhite onPress={returnBack} />
                 <View style={styles.topSmTitle}>
-                    <Text style={styles.topSmTitleText}>Record a New Sale</Text>
+                    <Text style={styles.topSmTitleText}>Add Multiple Quote Items</Text>
                 </View>
 
 
@@ -153,61 +167,81 @@ const CreateQuote = (props) => {
                     />
                 </View>
                 <View style={styles.bottomCover}>
-                    <View style={styles.btnCover}>
-                        <BtnLg title="Add more Items" style={styles.createBtn1} onPress={returnBack} styles={styles.btnText} />
-                    </View>
                     <View style={styles.topCover}>
-                        <Text style={styles.addText}>Add Customer Details</Text>
-                        {/* <TouchableOpacity>
-        <Fcon name="x" size={20} color="#000" style={{paddingLeft:5}} />
-   </TouchableOpacity> */}
-                        <ToggleSwitch
-                            isOn={isOnBlueToggleSwitch}
-                            onColor="#fff"
-                            offColor="white"
-                            thumbOnStyle={styles.thumbOnStyle}
-                            thumbOffStyle={styles.thumbOffStyle}
-                            trackOnStyle={styles.trackOnStyle}
-                            trackOffStyle={styles.trackOffStyle}
-                            // label="Example label"
-                            labelStyle={{ color: "black", fontWeight: "900" }}
-                            size="small"
-                            onToggle={isOnDefaultToggleSwitch => {
-                                SetIsOnBlueToggleSwitch(!isOnBlueToggleSwitch);
-                                onToggle(!isOnBlueToggleSwitch);
-                            }}
+                      <Text style={styles.addText}>Add item</Text>
+                    </View>
+                    <View>
+
+                        <TextInput
+                            style={styles.textInput}
+                            placeholder="Item name"
+                            onChangeText={itemName => setItemName(itemName)}
+                            defaultValue={itemName}
+                            
+                        />
+
+                        <TextInput
+                            style={styles.textInput}
+                            placeholder="0.00"
+                            keyboardType="number-pad"
+                            onChangeText={itemAmount => setItemAmount(itemAmount)}
+                            defaultValue={itemAmount}
                         />
                     </View>
-                    {isOnBlueToggleSwitch ?
-                        <View>
 
-                            <View style={styles.labelCover}>
-                                <Text style={styles.labelText}>Name of Customer</Text>
+                    <View style={styles.dateContainer}>
+                        <View style={styles.date1}>
+                            <Text style={styles.label3}>Quantity</Text>
+                            <View style={styles.increaseCartMainAmountView}>
+                                <View style={styles.cartAmountView}>
+                                    <TouchableOpacity style={styles.increase} onPress={decreaseCart}>
+                                        <FIcon name="minus" size={12} color="#9CA3AF" />
+                                    </TouchableOpacity>
+                                    <View style={styles.increaseText}>
+                                        <Text  style={styles.label2}>{cartAmount.toString()}</Text>
+                                        {/* <TextInput
+                                            style={styles.label2}
+                                            value=
+                                            onChangeText={(val) => {
+                                                 // if (result.quantity_available >= val) {
+                                                    val = val.replaceAll(regex, "")
+                                                    setCartAmount(val.replace(/[^0-9]/g, ''))
+                                                // }
+                                            }
+                                            }
+                                            keyboardType="numeric"
+                                        /> */}
+
+                                    </View>
+                                    <TouchableOpacity style={styles.decrease} onPress={increaseCart}>
+                                        <FIcon name="plus" size={12} color="#9CA3AF" />
+                                    </TouchableOpacity>
+                                </View>
+                                <View style={{ width: "57%" }}>
+                                    {/* <Text style={styles.amountText}>&#8358;{commafy(cartAmount)}</Text> */}
+                                </View>
                             </View>
-                            <TextInput
-                                style={styles.textInput}
-                                placeholder="Enter a name"
-                                onChangeText={itemName => setItemName(itemName)}
-                                defaultValue={itemName}
-                            />
-                            <View style={styles.labelCover}>
-                                <Text style={styles.labelText}>Customer Phone's number</Text>
-                            </View>
-                            <TextInput
-                                style={styles.textInput}
-                                placeholder="Enter phone number"
-                                keyboardType="number-pad"
-                                onChangeText={itemAmount => setItemAmount(itemAmount)}
-                                defaultValue={itemAmount}
-                            />
                         </View>
-                        : null
-                    }
+                        <View style={styles.date1}>
+                            {/* The date picker */}
+                           
+                            <DatePicker
+                                    isVisible={isDateTimePickerVisible}
+                                    onConfirm={handleDatePicked}
+                                    onCancel={hideDateTimePicker}
+                                />
+                         
+                            <View>
+                                <Text style={styles.pickedDate}>{date.toDateString()}</Text>
+                            </View>
 
-
-
-
-
+                              <TouchableOpacity onPress={showDateTimePicker}>
+                              <Fcon name="calendar" size={14} color="#000" style={{ paddingLeft: 5 }} />
+                             </TouchableOpacity>
+                          
+                        </View>
+                    </View>
+                   
 
 
                     {errMsg ? <View style={styles.errMainView}>
@@ -216,13 +250,20 @@ const CreateQuote = (props) => {
                         null
                     }
 
-                    <View style={{ marginTop: 30 }}>
-                        <View style={styles.btnCover}>
-                            <BtnLg title="Create Quotation" style={styles.createBtn} styles={styles.btnText} />
-                        </View>
-                        <View style={styles.btnCover}>
-                            <BtnLg title="Save" />
-                        </View>
+                    <View style={styles.selectContainer}>
+
+                        <FlatList
+                            data={payment}
+                            renderItem={renderItem}
+                            keyExtractor={item => item.id}
+                            horizontal={true}
+                        />
+                    </View>
+                    <View style={styles.btnCover}>
+                   
+                            <BtnLg title="Add Item" style={styles.createBtn} styles={styles.btnText} />
+                       
+                        <BtnLg title="Create Quote" onPress={() => props.navigation.navigate('Quotation')} />
                     </View>
                 </View>
 

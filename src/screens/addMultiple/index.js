@@ -4,7 +4,7 @@ import {
     StatusBar,
 } from "react-native";
 import { Header, NavHeaderWhite, BtnLg, GeneralStatusBarColor } from "@Component";
-import DateTimePicker from '@react-native-community/datetimepicker';
+import DatePicker from "react-native-modal-datetime-picker";
 import Toast from 'react-native-toast-message';
 import commafy from "@Helper/Commafy";
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
@@ -34,25 +34,30 @@ const AddMultiple = (props) => {
     const [newValue, setnewValue] = useState(1);
     const [adding, setAdding] = useState(false);
     const [childData, setChildData] = useState("");
+    const [isDateTimePickerVisible, setIsDateTimePickerVisible] = useState(false);
 
 
+    // this is for the date
+    const showDateTimePicker = () => {
+        setIsDateTimePickerVisible(true)
+        };
+    const hideDateTimePicker = () => {
+        setIsDateTimePickerVisible(false)
+        };
+     
+    const  handleDatePicked = date => {
+        console.log("A date has been picked: ", date);
+        setDate(date)
+        hideDateTimePicker();
+      };
+     
 
-    const showPicker = () => {
-        setIsPickerShow(true);
-    };
 
     const passData = (childData) => {
         setChildData(childData);
        
       };
 
-    const onChange = (event, value) => {
-        setDate(value);
-        console.log(value);
-        if (Platform.OS === 'android') {
-            setIsPickerShow(false);
-        }
-    };
     // this is to return back to the Home Screen
     const returnBack = () => {
         props.navigation.navigate('TabNavigator')
@@ -191,18 +196,19 @@ const AddMultiple = (props) => {
                                         <FIcon name="minus" size={12} color="#9CA3AF" />
                                     </TouchableOpacity>
                                     <View style={styles.increaseText}>
-                                        <TextInput
+                                        <Text  style={styles.label2}>{cartAmount.toString()}</Text>
+                                        {/* <TextInput
                                             style={styles.label2}
-                                            value={cartAmount.toString()}
+                                            value=
                                             onChangeText={(val) => {
-                                                // if (result.quantity_available >= val) {
-                                                val = val.replaceAll(regex, "")
-                                                setCartAmount(val.replace(/[^0-9]/g, ''))
+                                                 // if (result.quantity_available >= val) {
+                                                    val = val.replaceAll(regex, "")
+                                                    setCartAmount(val.replace(/[^0-9]/g, ''))
                                                 // }
                                             }
                                             }
                                             keyboardType="numeric"
-                                        />
+                                        /> */}
 
                                     </View>
                                     <TouchableOpacity style={styles.decrease} onPress={increaseCart}>
@@ -216,29 +222,20 @@ const AddMultiple = (props) => {
                         </View>
                         <View style={styles.date1}>
                             {/* The date picker */}
-                            {isPickerShow && (
-                                <DateTimePicker
-                                    value={date}
-                                    mode={'date'}
-                                    display={
-                                        Platform.OS === "ios" ? "spinner" : "default"
-                                      }
-                                    // display={Platform.OS === 'ios' ? 'spinner' : 'calendar'}
-                                    is24Hour={true}
-                                    onChange={onChange}
-                                    style={styles.datePicker}
+                           
+                            <DatePicker
+                                    isVisible={isDateTimePickerVisible}
+                                    onConfirm={handleDatePicked}
+                                    onCancel={hideDateTimePicker}
                                 />
-                            )}
+                         
                             <View>
                                 <Text style={styles.pickedDate}>{date.toDateString()}</Text>
                             </View>
-
-
-                            {!isPickerShow && (
-                                <TouchableOpacity onPress={showPicker}>
-                                    <Fcon name="calendar" size={14} color="#000" style={{ paddingLeft: 5 }} />
-                                </TouchableOpacity>
-                            )}
+                              <TouchableOpacity onPress={showDateTimePicker}>
+                              <Fcon name="calendar" size={14} color="#000" style={{ paddingLeft: 5 }} />
+                             </TouchableOpacity>
+                    
                         </View>
                     </View>
                     <View style={styles.textInput}>
@@ -276,9 +273,9 @@ const AddMultiple = (props) => {
                     </View>
                     <View style={styles.btnCover}>
                    
-                            <BtnLg title="Add Item" style={styles.createBtn} onPress={addItemBtn} styles={styles.btnText} />
+                            <BtnLg title="Add Item" style={styles.createBtn} styles={styles.btnText} />
                        
-                        <BtnLg title="Save" onPress={() => props.navigation.navigate('CreateQuote')} />
+                        <BtnLg title="Save" onPress={() => props.navigation.navigate('Homee')} />
                     </View>
                 </View>
 
