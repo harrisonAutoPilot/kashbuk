@@ -153,10 +153,10 @@ const styles = StyleSheet.create({
         textAlign: "center"
       },
       btnTextWhiteTwo: {
-        color: '#0F8D8F',
-        fontSize: 20,
+        color: '#011A51',
+        fontSize: 22,
         fontFamily: "Urbanist-SemiBold",
-        lineHeight: 36,
+        lineHeight: 33,
         letterSpacing: 0.1,
         textAlign: "center",
         fontWeight:'800'

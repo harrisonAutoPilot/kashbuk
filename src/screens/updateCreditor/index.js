@@ -81,7 +81,7 @@ const UpdateCreditor= (props) => {
  
     // this is to return back to the Home Screen
     const returnBack = () => {
-        props.navigation.navigate('Homee')
+        props.navigation.navigate('CashBook')
     }
 
     const addMultiple = () => {
@@ -247,8 +247,10 @@ const UpdateCreditor= (props) => {
                                 <Fcon name="plus" size={28} color="#0F8D8F" />
                                 </View>
                               </TouchableOpacity>
+
+                              {/* FOR THE FORST VERSION WE WONT BE NEEDING THIS */}
                             </View> 
-                            {
+                            {/* {
                                 showReminderNote ?
                                 <View style={{marginTop:-20}}>
 
@@ -266,7 +268,7 @@ const UpdateCreditor= (props) => {
                                 </View>
                                 :
                                 null
-                            }
+                            } */}
                              
                         </View>
                        

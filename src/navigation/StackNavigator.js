@@ -26,7 +26,9 @@ import Receipt from '@Screen/receipt';
 import Quotation from '@Screen/quote';
 import UpdateCreditor from '@Screen/updateCreditor';
 import UpdateDebtor from '@Screen/updateDebtor';
-
+import Staffs from '@Screen/staffs';
+import AddStaff from '@Screen/addStaff';
+import ContactsList from '@Screen/contactList';
 
 import BottomTabNavigator from "./TabNavigator";
 
@@ -111,6 +113,9 @@ export default MainStackNavigator = () => {
           <Stack.Screen name="Quotation" component={Quotation} />
           <Stack.Screen name="UpdateCreditor" component={UpdateCreditor} />
           <Stack.Screen name="UpdateDebtor" component={UpdateDebtor} />
+          <Stack.Screen name="Staffs" component={Staffs} />
+          <Stack.Screen name="AddStaff" component={AddStaff} />
+          <Stack.Screen name="ContactsList" component={ContactsList} />
           <Stack.Screen name="TabNavigator" component={BottomTabNavigator} initialRouteName="Home" />
         </Stack.Navigator>
     );

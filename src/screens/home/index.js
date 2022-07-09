@@ -46,7 +46,20 @@ const Home = (props) => {
         }).start();
       };
 
+const toCreateQuote = () => {
+    runAnimationOnClick()
+   props.navigation.navigate('CreateNewQuote')
+}
 
+const toCreateExpenses = () => {
+    runAnimationOnClick()
+   props.navigation.navigate('AddExpenses')
+}
+
+const toCreateSales= () => {
+    runAnimationOnClick()
+   props.navigation.navigate('AddItem')
+}
 
     const receipt =()=>{
      props.navigation.navigate('Receipt')
@@ -209,7 +222,7 @@ const Home = (props) => {
                         }}
                     >
 
-                    <TouchableOpacity onPress={() => props.navigation.navigate('CreateNewQuote')}>
+                    <TouchableOpacity onPress={toCreateQuote}>
                     <View style={styles.smBtnOne}>
                         <View style={styles.smBtnInner}>
                         <Image style={styles.smLogo} source={require("@Assets/image/add_icon.png")} />
@@ -219,7 +232,7 @@ const Home = (props) => {
                       </View>
                     </View>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => props.navigation.navigate('AddExpenses')}>
+                    <TouchableOpacity onPress={toCreateExpenses}>
                     <View style={styles.smBtnTwo}>
                         <View style={styles.smBtnInner}>
                         <Image style={styles.smLogo} source={require("@Assets/image/arcticons_myexpenses.png")} />
@@ -229,7 +242,7 @@ const Home = (props) => {
                       </View>
                     </View>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => props.navigation.navigate('AddItem')}>
+                    <TouchableOpacity onPress={toCreateSales}>
                     <View style={styles.smBtnThree}>
                         <View style={styles.smBtnInner}>
                         <Image style={styles.smLogo} source={require("@Assets/image/arcticons_aviasales.png")} />

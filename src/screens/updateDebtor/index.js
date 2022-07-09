@@ -81,7 +81,7 @@ const UpdateDebtor = (props) => {
  
     // this is to return back to the Home Screen
     const returnBack = () => {
-        props.navigation.navigate('Homee')
+        props.navigation.navigate('CashBook')
     }
 
     const addMultiple = () => {
@@ -248,7 +248,7 @@ const UpdateDebtor = (props) => {
                                 </View>
                               </TouchableOpacity>
                             </View> 
-                            {
+                            {/* {
                                 showReminderNote ?
                                 <View style={{marginTop:-20}}>
 
@@ -266,7 +266,7 @@ const UpdateDebtor = (props) => {
                                 </View>
                                 :
                                 null
-                            }
+                            } */}
                              
                         </View>
                        

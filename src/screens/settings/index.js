@@ -1,6 +1,6 @@
 import React, { useState, useRef, Easing, useEffect, useCallback } from "react";
 import {
-    View, Text, TextInput, Image, Button, TouchableOpacity, Animated, FlatList, SafeAreaView, animated, Keyboard,
+    View, Text, TextInput,Linking,  Image, Button, TouchableOpacity, Animated, FlatList, SafeAreaView, animated, Keyboard,
     StatusBar,
 } from "react-native";
 import { Header, NavHeaderWhite,NavHeader, BtnLg, GeneralStatusBarColor } from "@Component";
@@ -114,6 +114,24 @@ const Settings = ({ props, navigation }) => {
         setErr("")
     }
 
+
+
+  const mobileCall = () => Linking.openURL(`tel:${'08120102020'}`);
+
+  const whatsappMessage = () => {
+
+    // Needs to be implemented
+    let URL = 'whatsapp://send?text=' + 'Welcome to Kashbuk. Please make your inquiry' + '&phone=2349030117973';
+
+    Linking.openURL(URL)
+      .then((data) => {
+        console.log('WhatsApp Opened');
+      })
+      .catch(() => {
+        Alert.alert('Make sure Whatsapp installed on your device');
+      });
+  };
+
    
     const scrollY = useRef(new Animated.Value(0)).current;
     const [visible, setVisible] = useState(false);
@@ -188,6 +206,7 @@ const Settings = ({ props, navigation }) => {
                 <View style={styles.iconCover}>
                   <Icon name="person-circle" size={22} color="#000"/>
                 </View>
+                <TouchableOpacity onPress={() => navigation.navigate("Staffs")}>
                 <View style={styles.listCover}>
                     <Text style={styles.optionText}>
                     Add Staff
@@ -196,6 +215,7 @@ const Settings = ({ props, navigation }) => {
                     Add a new Staff / Shop Keeper.
                     </Text>
                 </View>
+                </TouchableOpacity>
             </View>
 
             <View style={styles.generalOptionCover}>
@@ -278,12 +298,15 @@ const Settings = ({ props, navigation }) => {
                 <View style={styles.iconCover}>
                 <FIcon name="phone-call" size={22} color="#000"/>
                 </View>
+                <TouchableOpacity onPress={whatsappMessage}>
                 <View style={styles.listCover}>
                     <Text style={styles.optionText}>
                     Contact us
                     </Text>
                    
                 </View>
+                </TouchableOpacity>
+               
             </View>
            
 

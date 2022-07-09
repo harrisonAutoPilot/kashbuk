@@ -427,13 +427,14 @@ dateCover:{
   marginBottom:10
 },
 plusIconCover:{
-  width:50,
-  height:48,
+  width:42,
+  height:49,
   borderWidth:1,
   borderColor:"#0F8D8F",
   alignItems:'center',
   justifyContent:'center',
   borderRadius:5,
+  marginLeft:2
 },
 bellStyle:{
 left:40,
